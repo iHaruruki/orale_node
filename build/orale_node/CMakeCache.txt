@@ -168,7 +168,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=orale_node
+CMAKE_PROJECT_NAME:STATIC=my_serial_node
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -275,7 +275,7 @@ SITE:STRING=peach-virtual-machine
 TinyXML2_DIR:PATH=TinyXML2_DIR-NOTFOUND
 
 //Path to a library.
-_lib:FILEPATH=/opt/ros/humble/lib/librosgraph_msgs__rosidl_typesupport_fastrtps_cpp.so
+_lib:FILEPATH=/opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_fastrtps_cpp.so
 
 //The directory containing a CMake configuration file for ament_cmake.
 ament_cmake_DIR:PATH=/opt/ros/humble/share/ament_cmake/cmake
@@ -388,11 +388,23 @@ fmt_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/fmt
 //The directory containing a CMake configuration file for foonathan_memory.
 foonathan_memory_DIR:PATH=/opt/ros/humble/lib/foonathan_memory/cmake
 
+//The directory containing a CMake configuration file for geometry_msgs.
+geometry_msgs_DIR:PATH=/opt/ros/humble/share/geometry_msgs/cmake
+
 //The directory containing a CMake configuration file for libstatistics_collector.
 libstatistics_collector_DIR:PATH=/opt/ros/humble/share/libstatistics_collector/cmake
 
 //The directory containing a CMake configuration file for libyaml_vendor.
 libyaml_vendor_DIR:PATH=/opt/ros/humble/share/libyaml_vendor/cmake
+
+//Value Computed by CMake
+my_serial_node_BINARY_DIR:STATIC=/home/peach/ros2_ws/src/orale_node/build/orale_node
+
+//Value Computed by CMake
+my_serial_node_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+my_serial_node_SOURCE_DIR:STATIC=/home/peach/ros2_ws/src/orale_node
 
 //Value Computed by CMake
 orale_node_BINARY_DIR:STATIC=/home/peach/ros2_ws/src/orale_node/build/orale_node
