@@ -1,0 +1,65 @@
+[0.036s] Invoking command in '/home/peach/ros2_ws/src/orale_node/build/orale_node': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/peach/ros2_ws/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/install/urdf_robot:/home/peach/ros2_ws/install/p9n_bringup:/home/peach/ros2_ws/install/rqt_controller_manager:/home/peach/ros2_ws/install/rosboard:/home/peach/ros2_ws/install/ros2controlcli:/home/peach/ros2_ws/install/ros2_workshop:/home/peach/ros2_ws/install/lucia_slam_navigation:/home/peach/ros2_ws/src/urdf_tutorial_r2d2/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urdf_robot:/home/peach/ros2_ws/src/install/ros2_workshop:/home/peach/ros2_ws/src/install/raspimouse_cartographer:/opt/ros/humble /usr/bin/cmake /home/peach/ros2_ws/src/orale_node -DCMAKE_INSTALL_PREFIX=/home/peach/ros2_ws/src/orale_node/install/orale_node
+[0.064s] -- Found ament_cmake: 1.3.10 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.262s] -- Found rclcpp: 16.0.10 (/opt/ros/humble/share/rclcpp/cmake)
+[0.304s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.308s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.317s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.333s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.362s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.411s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.419s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.668s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.724s] -- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.901s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.901s] -- Configured cppcheck include dirs: 
+[0.901s] -- Configured cppcheck exclude dirs and/or files: 
+[0.911s] -- Added test 'flake8' to check Python code syntax and style conventions
+[0.931s] -- Added test 'lint_cmake' to check CMake code style
+[0.941s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[1.025s] -- Added test 'uncrustify' to check C / C++ code style
+[1.025s] -- Configured uncrustify additional arguments: 
+[1.035s] -- Added test 'xmllint' to check XML markup files
+[1.037s] -- Configuring done
+[1.052s] -- Generating done
+[1.055s] -- Build files have been written to: /home/peach/ros2_ws/src/orale_node/build/orale_node
+[1.067s] Invoked command in '/home/peach/ros2_ws/src/orale_node/build/orale_node' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/peach/ros2_ws/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/install/urdf_robot:/home/peach/ros2_ws/install/p9n_bringup:/home/peach/ros2_ws/install/rqt_controller_manager:/home/peach/ros2_ws/install/rosboard:/home/peach/ros2_ws/install/ros2controlcli:/home/peach/ros2_ws/install/ros2_workshop:/home/peach/ros2_ws/install/lucia_slam_navigation:/home/peach/ros2_ws/src/urdf_tutorial_r2d2/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urdf_robot:/home/peach/ros2_ws/src/install/ros2_workshop:/home/peach/ros2_ws/src/install/raspimouse_cartographer:/opt/ros/humble /usr/bin/cmake /home/peach/ros2_ws/src/orale_node -DCMAKE_INSTALL_PREFIX=/home/peach/ros2_ws/src/orale_node/install/orale_node
+[1.070s] Invoking command in '/home/peach/ros2_ws/src/orale_node/build/orale_node': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/peach/ros2_ws/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/install/urdf_robot:/home/peach/ros2_ws/install/p9n_bringup:/home/peach/ros2_ws/install/rqt_controller_manager:/home/peach/ros2_ws/install/rosboard:/home/peach/ros2_ws/install/ros2controlcli:/home/peach/ros2_ws/install/ros2_workshop:/home/peach/ros2_ws/install/lucia_slam_navigation:/home/peach/ros2_ws/src/urdf_tutorial_r2d2/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urdf_robot:/home/peach/ros2_ws/src/install/ros2_workshop:/home/peach/ros2_ws/src/install/raspimouse_cartographer:/opt/ros/humble /usr/bin/cmake --build /home/peach/ros2_ws/src/orale_node/build/orale_node -- -j8 -l8
+[1.203s] [ 50%] [32mBuilding CXX object CMakeFiles/orale_node.dir/src/read_serial.cpp.o[0m
+[2.360s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:[m[K In function ‘[01m[Kint main()[m[K’:
+[2.360s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:145:33:[m[K [01;35m[Kwarning: [m[KISO C++ forbids variable length array ‘[01m[Kread_buf[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wvla-Wvla]8;;[m[K]
+[2.360s]   145 |                         uint8_t [01;35m[Kread_buf[m[K [bytesWaiting+1];
+[2.360s]       |                                 [01;35m[K^~~~~~~~[m[K
+[2.361s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:153:38:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Klong unsigned int[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[2.361s]   153 |                         for(i = 0; [01;35m[Ki < sizeof(read_buf)[m[K; i++){//find the head point
+[2.361s]       |                                    [01;35m[K~~^~~~~~~~~~~~~~~~~~[m[K
+[2.361s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:186:49:[m[K [01;35m[Kwarning: [m[KISO C++ forbids variable length array ‘[01m[Kread_buf[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wvla-Wvla]8;;[m[K]
+[2.361s]   186 |                                         uint8_t [01;35m[Kread_buf[m[K [bytesWaiting+1];
+[2.361s]       |                                                 [01;35m[K^~~~~~~~[m[K
+[2.361s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:194:54:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Klong unsigned int[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[2.361s]   194 |                                         for(i = 0; [01;35m[Ki < sizeof(read_buf)[m[K; i++){//find the head point
+[2.361s]       |                                                    [01;35m[K~~^~~~~~~~~~~~~~~~~~[m[K
+[2.365s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:136:13:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kcountup[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[2.365s]   136 |         int [01;35m[Kcountup[m[K = 0;
+[2.365s]       |             [01;35m[K^~~~~~~[m[K
+[2.787s] [100%] [32m[1mLinking CXX executable orale_node[0m
+[3.321s] [100%] Built target orale_node
+[3.349s] Invoked command in '/home/peach/ros2_ws/src/orale_node/build/orale_node' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/peach/ros2_ws/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/install/urdf_robot:/home/peach/ros2_ws/install/p9n_bringup:/home/peach/ros2_ws/install/rqt_controller_manager:/home/peach/ros2_ws/install/rosboard:/home/peach/ros2_ws/install/ros2controlcli:/home/peach/ros2_ws/install/ros2_workshop:/home/peach/ros2_ws/install/lucia_slam_navigation:/home/peach/ros2_ws/src/urdf_tutorial_r2d2/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urdf_robot:/home/peach/ros2_ws/src/install/ros2_workshop:/home/peach/ros2_ws/src/install/raspimouse_cartographer:/opt/ros/humble /usr/bin/cmake --build /home/peach/ros2_ws/src/orale_node/build/orale_node -- -j8 -l8
+[3.372s] Invoking command in '/home/peach/ros2_ws/src/orale_node/build/orale_node': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/peach/ros2_ws/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/install/urdf_robot:/home/peach/ros2_ws/install/p9n_bringup:/home/peach/ros2_ws/install/rqt_controller_manager:/home/peach/ros2_ws/install/rosboard:/home/peach/ros2_ws/install/ros2controlcli:/home/peach/ros2_ws/install/ros2_workshop:/home/peach/ros2_ws/install/lucia_slam_navigation:/home/peach/ros2_ws/src/urdf_tutorial_r2d2/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urdf_robot:/home/peach/ros2_ws/src/install/ros2_workshop:/home/peach/ros2_ws/src/install/raspimouse_cartographer:/opt/ros/humble /usr/bin/cmake --install /home/peach/ros2_ws/src/orale_node/build/orale_node
+[3.392s] -- Install configuration: ""
+[3.393s] -- Installing: /home/peach/ros2_ws/src/orale_node/install/orale_node/bin/orale_node
+[3.393s] -- Installing: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/ament_index/resource_index/package_run_dependencies/orale_node
+[3.393s] -- Installing: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/ament_index/resource_index/parent_prefix_path/orale_node
+[3.394s] -- Installing: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/environment/ament_prefix_path.sh
+[3.394s] -- Installing: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/environment/ament_prefix_path.dsv
+[3.394s] -- Installing: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/environment/path.sh
+[3.395s] -- Installing: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/environment/path.dsv
+[3.395s] -- Installing: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/local_setup.bash
+[3.395s] -- Installing: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/local_setup.sh
+[3.396s] -- Installing: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/local_setup.zsh
+[3.396s] -- Installing: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/local_setup.dsv
+[3.396s] -- Installing: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/package.dsv
+[3.396s] -- Installing: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/ament_index/resource_index/packages/orale_node
+[3.397s] -- Installing: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/cmake/orale_nodeConfig.cmake
+[3.397s] -- Installing: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/cmake/orale_nodeConfig-version.cmake
+[3.397s] -- Installing: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/package.xml
+[3.400s] Invoked command in '/home/peach/ros2_ws/src/orale_node/build/orale_node' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/peach/ros2_ws/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/install/urdf_robot:/home/peach/ros2_ws/install/p9n_bringup:/home/peach/ros2_ws/install/rqt_controller_manager:/home/peach/ros2_ws/install/rosboard:/home/peach/ros2_ws/install/ros2controlcli:/home/peach/ros2_ws/install/ros2_workshop:/home/peach/ros2_ws/install/lucia_slam_navigation:/home/peach/ros2_ws/src/urdf_tutorial_r2d2/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urdf_robot:/home/peach/ros2_ws/src/install/ros2_workshop:/home/peach/ros2_ws/src/install/raspimouse_cartographer:/opt/ros/humble /usr/bin/cmake --install /home/peach/ros2_ws/src/orale_node/build/orale_node

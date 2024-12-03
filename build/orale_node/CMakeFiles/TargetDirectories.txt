@@ -1,0 +1,10 @@
+/home/peach/ros2_ws/src/orale_node/build/orale_node/CMakeFiles/uninstall.dir
+/home/peach/ros2_ws/src/orale_node/build/orale_node/CMakeFiles/orale_node_uninstall.dir
+/home/peach/ros2_ws/src/orale_node/build/orale_node/CMakeFiles/orale_node.dir
+/home/peach/ros2_ws/src/orale_node/build/orale_node/CMakeFiles/test.dir
+/home/peach/ros2_ws/src/orale_node/build/orale_node/CMakeFiles/edit_cache.dir
+/home/peach/ros2_ws/src/orale_node/build/orale_node/CMakeFiles/rebuild_cache.dir
+/home/peach/ros2_ws/src/orale_node/build/orale_node/CMakeFiles/list_install_components.dir
+/home/peach/ros2_ws/src/orale_node/build/orale_node/CMakeFiles/install.dir
+/home/peach/ros2_ws/src/orale_node/build/orale_node/CMakeFiles/install/local.dir
+/home/peach/ros2_ws/src/orale_node/build/orale_node/CMakeFiles/install/strip.dir

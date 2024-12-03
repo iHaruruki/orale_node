@@ -1,0 +1,16 @@
+/home/peach/ros2_ws/src/orale_node/install/orale_node/bin/orale_node
+/home/peach/ros2_ws/src/orale_node/install/orale_node/share/ament_index/resource_index/package_run_dependencies/orale_node
+/home/peach/ros2_ws/src/orale_node/install/orale_node/share/ament_index/resource_index/parent_prefix_path/orale_node
+/home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/environment/ament_prefix_path.sh
+/home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/environment/ament_prefix_path.dsv
+/home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/environment/path.sh
+/home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/environment/path.dsv
+/home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/local_setup.bash
+/home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/local_setup.sh
+/home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/local_setup.zsh
+/home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/local_setup.dsv
+/home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/package.dsv
+/home/peach/ros2_ws/src/orale_node/install/orale_node/share/ament_index/resource_index/packages/orale_node
+/home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/cmake/orale_nodeConfig.cmake
+/home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/cmake/orale_nodeConfig-version.cmake
+/home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/package.xml
