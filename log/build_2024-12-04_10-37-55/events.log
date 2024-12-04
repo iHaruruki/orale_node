@@ -1,0 +1,218 @@
+[0.000000] (-) TimerEvent: {}
+[0.001739] (orale_node) JobQueued: {'identifier': 'orale_node', 'dependencies': OrderedDict()}
+[0.001921] (orale_node) JobStarted: {'identifier': 'orale_node'}
+[0.078984] (orale_node) JobProgress: {'identifier': 'orale_node', 'progress': 'cmake'}
+[0.082237] (orale_node) JobProgress: {'identifier': 'orale_node', 'progress': 'build'}
+[0.082820] (orale_node) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/peach/ros2_ws/src/orale_node/build/orale_node', '--', '-j8', '-l8'], 'cwd': '/home/peach/ros2_ws/src/orale_node/build/orale_node', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_US'), ('USER', 'peach'), ('LC_TIME', 'en_US.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/peach/ros2_ws/install/wiimote/lib:/home/peach/ros2_ws/install/wiimote_msgs/lib:/home/peach/ros2_ws/install/urg_node2/lib:/home/peach/ros2_ws/install/transmission_interface/lib:/home/peach/ros2_ws/install/spacenav/lib:/home/peach/ros2_ws/install/p9n_test/lib:/home/peach/ros2_ws/install/p9n_node/lib:/home/peach/ros2_ws/install/p9n_example/lib:/home/peach/ros2_ws/install/joy/lib:/home/peach/ros2_ws/install/lucia_controller/lib:/home/peach/ros2_ws/install/hardware_interface_testing/lib:/home/peach/ros2_ws/install/p9n_interface/lib:/home/peach/ros2_ws/install/controller_interface/lib:/home/peach/ros2_ws/install/hardware_interface/lib:/home/peach/ros2_ws/install/diagnostic_updater/lib:/home/peach/ros2_ws/install/diagnostic_aggregator/lib:/home/peach/ros2_ws/install/controller_manager_msgs/lib:/home/peach/install/lucia_controller/lib:/home/peach/ros2_ws/src/install/urg_node2/lib:/home/peach/ros2_ws/src/lucia_controller/install/lucia_controller/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/peach'), ('OLDPWD', '/home/peach'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'en_US.UTF-8'), ('SYSTEMD_EXEC_PID', '1441'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/peach/ros2_ws/install:/home/peach/install:/home/peach/ros2_ws/src/urdf_tutorial_r2d2/install:/home/peach/ros2_ws/src/install:/home/peach/ros2_ws/src/lucia_controller/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'peach'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'peach'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/peach/ros2_ws/install/ydlidar_sdk/bin:/home/peach/ros2_ws/install/arduino/bin:/opt/ros/humble/bin:/home/peach/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/peach-virtual-machine:@/tmp/.ICE-unix/1400,unix/peach-virtual-machine:/tmp/.ICE-unix/1400'), ('PAPERSIZE', 'letter'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'en_US.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/74d11214_21ff_431a_a395_6e5101e6b2fc'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'en_US.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.XKAXX2'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.438'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/peach/ros2_ws/install/ydlidar_ros2_driver:/home/peach/ros2_ws/install/wiimote:/home/peach/ros2_ws/install/wiimote_msgs:/home/peach/ros2_ws/install/urg_node2:/home/peach/ros2_ws/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/install/urdf_tutorial:/home/peach/ros2_ws/install/urdf_robot:/home/peach/ros2_ws/install/ros2_control:/home/peach/ros2_ws/install/transmission_interface:/home/peach/ros2_ws/install/spacenav:/home/peach/ros2_ws/install/simple_listener:/home/peach/ros2_ws/install/diagnostics:/home/peach/ros2_ws/install/self_test:/home/peach/ros2_ws/install/p9n:/home/peach/ros2_ws/install/p9n_test:/home/peach/ros2_ws/install/p9n_bringup:/home/peach/ros2_ws/install/p9n_node:/home/peach/ros2_ws/install/p9n_example:/home/peach/ros2_ws/install/joy:/home/peach/ros2_ws/install/sdl2_vendor:/home/peach/ros2_ws/install/rqt_controller_manager:/home/peach/ros2_ws/install/lucia_slam:/home/peach/ros2_ws/install/rplidar_ros:/home/peach/ros2_ws/install/rosboard:/home/peach/ros2_ws/install/lucia_controller:/home/peach/ros2_ws/install/ros2controlcli:/home/peach/ros2_ws/install/ros2_workshop:/home/peach/ros2_ws/install/ros2_laser_scan_merger:/home/peach/ros2_ws/install/ros2_frst_test:/home/peach/ros2_ws/install/hardware_interface_testing:/home/peach/ros2_ws/install/ros2_control_test_assets:/home/peach/ros2_ws/install/rf2o_laser_odometry:/home/peach/ros2_ws/install/raspimouse_cartographer:/home/peach/ros2_ws/install/p9n_interface:/home/peach/ros2_ws/install/orale_node:/home/peach/ros2_ws/install/lucia_slam_navigation:/home/peach/ros2_ws/install/lucia_localization:/home/peach/ros2_ws/install/lucia_description:/home/peach/ros2_ws/install/lucia_cartographer:/home/peach/ros2_ws/install/lidar_odometry:/home/peach/ros2_ws/install/learning_tf2_cpp:/home/peach/ros2_ws/install/joy_linux:/home/peach/ros2_ws/install/joint_limits:/home/peach/ros2_ws/install/controller_interface:/home/peach/ros2_ws/install/hardware_interface:/home/peach/ros2_ws/install/diagnostic_common_diagnostics:/home/peach/ros2_ws/install/diagnostic_updater:/home/peach/ros2_ws/install/diagnostic_aggregator:/home/peach/ros2_ws/install/controller_manager_msgs:/home/peach/install/simple_listener:/home/peach/install/ros2_laser_scan_merger:/home/peach/install/ros2_bridage_yarp:/home/peach/install/lucia_controller:/home/peach/ros2_ws/src/urdf_tutorial_r2d2/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urg_node2:/home/peach/ros2_ws/src/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urdf_tutorial:/home/peach/ros2_ws/src/install/urdf_robot:/home/peach/ros2_ws/src/install/ugv02_cartographer:/home/peach/ros2_ws/src/install/simple_receiver_node:/home/peach/ros2_ws/src/install/simple_listener:/home/peach/ros2_ws/src/install/lucia_slam:/home/peach/ros2_ws/src/install/rplidar_ros:/home/peach/ros2_ws/src/install/ros2_workshop:/home/peach/ros2_ws/src/install/ros2_bridage_yarp:/home/peach/ros2_ws/src/install/rf2o_laser_odometry:/home/peach/ros2_ws/src/install/raspimouse_cartographer:/home/peach/ros2_ws/src/install/lucia_urdf:/home/peach/ros2_ws/src/install/lucia_bringup:/home/peach/ros2_ws/src/install/lucia_description:/home/peach/ros2_ws/src/install/lucia_controller:/home/peach/ros2_ws/src/install/loop_subscriber:/home/peach/ros2_ws/src/install/learning_tf2_cpp:/home/peach/ros2_ws/src/lucia_controller/install/lucia_controller:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'en_US.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'en_US.UTF-8'), ('LC_IDENTIFICATION', 'en_US.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/peach/ros2_ws/src/orale_node/build/orale_node'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/peach/ros2_ws/install/wiimote_msgs/local/lib/python3.10/dist-packages:/home/peach/ros2_ws/build/urdf_tutorial_r2d2:/home/peach/ros2_ws/install/urdf_tutorial_r2d2/lib/python3.10/site-packages:/home/peach/ros2_ws/install/urdf_robot/lib/python3.10/site-packages:/home/peach/ros2_ws/build/p9n_bringup:/home/peach/ros2_ws/install/p9n_bringup/lib/python3.10/site-packages:/home/peach/ros2_ws/build/rqt_controller_manager:/home/peach/ros2_ws/install/rqt_controller_manager/lib/python3.10/site-packages:/home/peach/ros2_ws/build/rosboard:/home/peach/ros2_ws/install/rosboard/lib/python3.10/site-packages:/home/peach/ros2_ws/build/ros2controlcli:/home/peach/ros2_ws/install/ros2controlcli/lib/python3.10/site-packages:/home/peach/ros2_ws/install/ros2_workshop/lib/python3.10/site-packages:/home/peach/ros2_ws/install/diagnostic_common_diagnostics/local/lib/python3.10/dist-packages:/home/peach/ros2_ws/install/diagnostic_updater/local/lib/python3.10/dist-packages:/home/peach/ros2_ws/install/diagnostic_aggregator/local/lib/python3.10/dist-packages:/home/peach/ros2_ws/install/controller_manager_msgs/local/lib/python3.10/dist-packages:/home/peach/ros2_ws/src/urdf_tutorial_r2d2/build/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/urdf_tutorial_r2d2/install/urdf_tutorial_r2d2/lib/python3.10/site-packages:/home/peach/ros2_ws/src/install/urdf_tutorial_r2d2/lib/python3.10/site-packages:/home/peach/ros2_ws/src/build/urdf_robot:/home/peach/ros2_ws/src/install/urdf_robot/lib/python3.10/site-packages:/home/peach/ros2_ws/src/build/ros2_workshop:/home/peach/ros2_ws/src/install/ros2_workshop/lib/python3.10/site-packages:/home/peach/ros2_ws/src/install/lucia_description/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'en_US.UTF-8'), ('LC_PAPER', 'en_US.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/peach/ros2_ws/install/ydlidar_sdk:/home/peach/ros2_ws/install/ydlidar_ros2_driver:/home/peach/ros2_ws/install/wiimote:/home/peach/ros2_ws/install/wiimote_msgs:/home/peach/ros2_ws/install/urg_node2:/home/peach/ros2_ws/install/urdf_tutorial:/home/peach/ros2_ws/install/ros2_control:/home/peach/ros2_ws/install/transmission_interface:/home/peach/ros2_ws/install/spacenav:/home/peach/ros2_ws/install/simple_listener:/home/peach/ros2_ws/install/diagnostics:/home/peach/ros2_ws/install/self_test:/home/peach/ros2_ws/install/p9n:/home/peach/ros2_ws/install/p9n_test:/home/peach/ros2_ws/install/p9n_node:/home/peach/ros2_ws/install/p9n_example:/home/peach/ros2_ws/install/joy:/home/peach/ros2_ws/install/sdl2_vendor:/home/peach/ros2_ws/install/lucia_slam:/home/peach/ros2_ws/install/rplidar_ros:/home/peach/ros2_ws/install/lucia_controller:/home/peach/ros2_ws/install/ros2_laser_scan_merger:/home/peach/ros2_ws/install/ros2_frst_test:/home/peach/ros2_ws/install/hardware_interface_testing:/home/peach/ros2_ws/install/ros2_control_test_assets:/home/peach/ros2_ws/install/rf2o_laser_odometry:/home/peach/ros2_ws/install/raspimouse_cartographer:/home/peach/ros2_ws/install/p9n_interface:/home/peach/ros2_ws/install/orale_node:/home/peach/ros2_ws/install/lucia_localization:/home/peach/ros2_ws/install/lucia_bringup:/home/peach/ros2_ws/install/lucia_description:/home/peach/ros2_ws/install/lucia_cartographer:/home/peach/ros2_ws/install/lidar_odometry:/home/peach/ros2_ws/install/learning_tf2_cpp:/home/peach/ros2_ws/install/joy_linux:/home/peach/ros2_ws/install/joint_limits:/home/peach/ros2_ws/install/controller_interface:/home/peach/ros2_ws/install/hardware_interface:/home/peach/ros2_ws/install/diagnostic_common_diagnostics:/home/peach/ros2_ws/install/diagnostic_updater:/home/peach/ros2_ws/install/diagnostic_aggregator:/home/peach/ros2_ws/install/controller_manager_msgs:/home/peach/install/simple_listener:/home/peach/install/ros2_laser_scan_merger:/home/peach/install/ros2_bridage_yarp:/home/peach/install/lucia_controller:/home/peach/ros2_ws/src/install/urg_node2:/home/peach/ros2_ws/src/install/urdf_tutorial:/home/peach/ros2_ws/src/install/ugv02_cartographer:/home/peach/ros2_ws/src/install/simple_receiver_node:/home/peach/ros2_ws/src/install/simple_listener:/home/peach/ros2_ws/src/install/lucia_slam:/home/peach/ros2_ws/src/install/rplidar_ros:/home/peach/ros2_ws/src/install/ros2_bridage_yarp:/home/peach/ros2_ws/src/install/rf2o_laser_odometry:/home/peach/ros2_ws/src/install/lucia_urdf:/home/peach/ros2_ws/src/install/lucia_bringup:/home/peach/ros2_ws/src/install/lucia_description:/home/peach/ros2_ws/src/install/lucia_controller:/home/peach/ros2_ws/src/install/loop_subscriber:/home/peach/ros2_ws/src/install/learning_tf2_cpp:/home/peach/ros2_ws/src/lucia_controller/install/lucia_controller:/home/peach/ros2_ws/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/install/urdf_robot:/home/peach/ros2_ws/install/p9n_bringup:/home/peach/ros2_ws/install/rqt_controller_manager:/home/peach/ros2_ws/install/rosboard:/home/peach/ros2_ws/install/ros2controlcli:/home/peach/ros2_ws/install/ros2_workshop:/home/peach/ros2_ws/install/lucia_slam_navigation:/home/peach/ros2_ws/src/urdf_tutorial_r2d2/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urdf_robot:/home/peach/ros2_ws/src/install/ros2_workshop:/home/peach/ros2_ws/src/install/raspimouse_cartographer:/opt/ros/humble')]), 'shell': False}
+[0.099271] (-) TimerEvent: {}
+[0.200097] (-) TimerEvent: {}
+[0.247040] (orale_node) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.10 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.301224] (-) TimerEvent: {}
+[0.402580] (-) TimerEvent: {}
+[0.503780] (-) TimerEvent: {}
+[0.604979] (-) TimerEvent: {}
+[0.705895] (-) TimerEvent: {}
+[0.796957] (orale_node) StdoutLine: {'line': b'-- Found rclcpp: 16.0.10 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[0.806442] (-) TimerEvent: {}
+[0.903158] (orale_node) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.906879] (-) TimerEvent: {}
+[0.911497] (orale_node) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.928558] (orale_node) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.974016] (orale_node) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.007251] (-) TimerEvent: {}
+[1.015108] (orale_node) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.107769] (-) TimerEvent: {}
+[1.108312] (orale_node) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[1.113123] (orale_node) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[1.208192] (-) TimerEvent: {}
+[1.310093] (-) TimerEvent: {}
+[1.410957] (-) TimerEvent: {}
+[1.511887] (-) TimerEvent: {}
+[1.612977] (-) TimerEvent: {}
+[1.713916] (-) TimerEvent: {}
+[1.768294] (orale_node) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.814153] (-) TimerEvent: {}
+[1.875998] (orale_node) StdoutLine: {'line': b'-- Found geometry_msgs: 4.2.4 (/opt/ros/humble/share/geometry_msgs/cmake)\n'}
+[1.914551] (-) TimerEvent: {}
+[2.016383] (-) TimerEvent: {}
+[2.117969] (-) TimerEvent: {}
+[2.136437] (orale_node) StdoutLine: {'line': b'-- Configuring done\n'}
+[2.208818] (orale_node) StdoutLine: {'line': b'-- Generating done\n'}
+[2.218581] (-) TimerEvent: {}
+[2.227971] (orale_node) StdoutLine: {'line': b'-- Build files have been written to: /home/peach/ros2_ws/src/orale_node/build/orale_node\n'}
+[2.319988] (-) TimerEvent: {}
+[2.414084] (orale_node) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target orale_node\x1b[0m\n'}
+[2.421575] (-) TimerEvent: {}
+[2.522223] (-) TimerEvent: {}
+[2.528403] (orale_node) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/orale_node.dir/src/read_serial.cpp.o\x1b[0m\n'}
+[2.622759] (-) TimerEvent: {}
+[2.723741] (-) TimerEvent: {}
+[2.824848] (-) TimerEvent: {}
+[2.926940] (-) TimerEvent: {}
+[3.028913] (-) TimerEvent: {}
+[3.129944] (-) TimerEvent: {}
+[3.230874] (-) TimerEvent: {}
+[3.331797] (-) TimerEvent: {}
+[3.432791] (-) TimerEvent: {}
+[3.533758] (-) TimerEvent: {}
+[3.634904] (-) TimerEvent: {}
+[3.735768] (-) TimerEvent: {}
+[3.836712] (-) TimerEvent: {}
+[3.937485] (-) TimerEvent: {}
+[4.038400] (-) TimerEvent: {}
+[4.139308] (-) TimerEvent: {}
+[4.240181] (-) TimerEvent: {}
+[4.341035] (-) TimerEvent: {}
+[4.441915] (-) TimerEvent: {}
+[4.542839] (-) TimerEvent: {}
+[4.643811] (-) TimerEvent: {}
+[4.744590] (-) TimerEvent: {}
+[4.845559] (-) TimerEvent: {}
+[4.946590] (-) TimerEvent: {}
+[5.047841] (-) TimerEvent: {}
+[5.149028] (-) TimerEvent: {}
+[5.250407] (-) TimerEvent: {}
+[5.351819] (-) TimerEvent: {}
+[5.452823] (-) TimerEvent: {}
+[5.553823] (-) TimerEvent: {}
+[5.654770] (-) TimerEvent: {}
+[5.755831] (-) TimerEvent: {}
+[5.856805] (-) TimerEvent: {}
+[5.957744] (-) TimerEvent: {}
+[6.058820] (-) TimerEvent: {}
+[6.159843] (-) TimerEvent: {}
+[6.260799] (-) TimerEvent: {}
+[6.362016] (-) TimerEvent: {}
+[6.462832] (-) TimerEvent: {}
+[6.563891] (-) TimerEvent: {}
+[6.664933] (-) TimerEvent: {}
+[6.766216] (-) TimerEvent: {}
+[6.867395] (-) TimerEvent: {}
+[6.968398] (-) TimerEvent: {}
+[7.069726] (-) TimerEvent: {}
+[7.170401] (-) TimerEvent: {}
+[7.271332] (-) TimerEvent: {}
+[7.372244] (-) TimerEvent: {}
+[7.473189] (-) TimerEvent: {}
+[7.574254] (-) TimerEvent: {}
+[7.675094] (-) TimerEvent: {}
+[7.776049] (-) TimerEvent: {}
+[7.877828] (-) TimerEvent: {}
+[7.979791] (-) TimerEvent: {}
+[8.081961] (-) TimerEvent: {}
+[8.184036] (-) TimerEvent: {}
+[8.286245] (-) TimerEvent: {}
+[8.388155] (-) TimerEvent: {}
+[8.490123] (-) TimerEvent: {}
+[8.591823] (-) TimerEvent: {}
+[8.693580] (-) TimerEvent: {}
+[8.796522] (-) TimerEvent: {}
+[8.898195] (-) TimerEvent: {}
+[8.999831] (-) TimerEvent: {}
+[9.101529] (-) TimerEvent: {}
+[9.203284] (-) TimerEvent: {}
+[9.305389] (-) TimerEvent: {}
+[9.407430] (-) TimerEvent: {}
+[9.509405] (-) TimerEvent: {}
+[9.611429] (-) TimerEvent: {}
+[9.713542] (-) TimerEvent: {}
+[9.815147] (-) TimerEvent: {}
+[9.916919] (-) TimerEvent: {}
+[10.018753] (-) TimerEvent: {}
+[10.120258] (-) TimerEvent: {}
+[10.222281] (-) TimerEvent: {}
+[10.323827] (-) TimerEvent: {}
+[10.424793] (-) TimerEvent: {}
+[10.526604] (-) TimerEvent: {}
+[10.628344] (-) TimerEvent: {}
+[10.729607] (-) TimerEvent: {}
+[10.831266] (-) TimerEvent: {}
+[10.932562] (-) TimerEvent: {}
+[11.033768] (-) TimerEvent: {}
+[11.135448] (-) TimerEvent: {}
+[11.238195] (-) TimerEvent: {}
+[11.340279] (-) TimerEvent: {}
+[11.441912] (-) TimerEvent: {}
+[11.543796] (-) TimerEvent: {}
+[11.645266] (-) TimerEvent: {}
+[11.747048] (-) TimerEvent: {}
+[11.847820] (-) TimerEvent: {}
+[11.949210] (-) TimerEvent: {}
+[12.050965] (-) TimerEvent: {}
+[12.152341] (-) TimerEvent: {}
+[12.253712] (-) TimerEvent: {}
+[12.355040] (-) TimerEvent: {}
+[12.456826] (-) TimerEvent: {}
+[12.558502] (-) TimerEvent: {}
+[12.660168] (-) TimerEvent: {}
+[12.761565] (-) TimerEvent: {}
+[12.862827] (-) TimerEvent: {}
+[12.964289] (-) TimerEvent: {}
+[13.065092] (-) TimerEvent: {}
+[13.166890] (-) TimerEvent: {}
+[13.267926] (-) TimerEvent: {}
+[13.369007] (-) TimerEvent: {}
+[13.469969] (-) TimerEvent: {}
+[13.571000] (-) TimerEvent: {}
+[13.671920] (-) TimerEvent: {}
+[13.773393] (-) TimerEvent: {}
+[13.874796] (-) TimerEvent: {}
+[13.976011] (-) TimerEvent: {}
+[14.077172] (-) TimerEvent: {}
+[14.178767] (-) TimerEvent: {}
+[14.280303] (-) TimerEvent: {}
+[14.381848] (-) TimerEvent: {}
+[14.483272] (-) TimerEvent: {}
+[14.584514] (-) TimerEvent: {}
+[14.686329] (-) TimerEvent: {}
+[14.787778] (-) TimerEvent: {}
+[14.889025] (-) TimerEvent: {}
+[14.990345] (-) TimerEvent: {}
+[15.091719] (-) TimerEvent: {}
+[15.192834] (-) TimerEvent: {}
+[15.293813] (-) TimerEvent: {}
+[15.395325] (-) TimerEvent: {}
+[15.497105] (-) TimerEvent: {}
+[15.598428] (-) TimerEvent: {}
+[15.699978] (-) TimerEvent: {}
+[15.801440] (-) TimerEvent: {}
+[15.902813] (-) TimerEvent: {}
+[16.004927] (-) TimerEvent: {}
+[16.086802] (orale_node) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable orale_node\x1b[0m\n'}
+[16.105351] (-) TimerEvent: {}
+[16.206815] (-) TimerEvent: {}
+[16.308532] (-) TimerEvent: {}
+[16.409530] (-) TimerEvent: {}
+[16.511340] (-) TimerEvent: {}
+[16.612754] (-) TimerEvent: {}
+[16.713890] (-) TimerEvent: {}
+[16.816014] (-) TimerEvent: {}
+[16.917142] (-) TimerEvent: {}
+[16.976259] (orale_node) StdoutLine: {'line': b'[100%] Built target orale_node\n'}
+[17.017789] (-) TimerEvent: {}
+[17.033440] (orale_node) CommandEnded: {'returncode': 0}
+[17.037601] (orale_node) JobProgress: {'identifier': 'orale_node', 'progress': 'install'}
+[17.088940] (orale_node) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/peach/ros2_ws/src/orale_node/build/orale_node'], 'cwd': '/home/peach/ros2_ws/src/orale_node/build/orale_node', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_US'), ('USER', 'peach'), ('LC_TIME', 'en_US.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/peach/ros2_ws/install/wiimote/lib:/home/peach/ros2_ws/install/wiimote_msgs/lib:/home/peach/ros2_ws/install/urg_node2/lib:/home/peach/ros2_ws/install/transmission_interface/lib:/home/peach/ros2_ws/install/spacenav/lib:/home/peach/ros2_ws/install/p9n_test/lib:/home/peach/ros2_ws/install/p9n_node/lib:/home/peach/ros2_ws/install/p9n_example/lib:/home/peach/ros2_ws/install/joy/lib:/home/peach/ros2_ws/install/lucia_controller/lib:/home/peach/ros2_ws/install/hardware_interface_testing/lib:/home/peach/ros2_ws/install/p9n_interface/lib:/home/peach/ros2_ws/install/controller_interface/lib:/home/peach/ros2_ws/install/hardware_interface/lib:/home/peach/ros2_ws/install/diagnostic_updater/lib:/home/peach/ros2_ws/install/diagnostic_aggregator/lib:/home/peach/ros2_ws/install/controller_manager_msgs/lib:/home/peach/install/lucia_controller/lib:/home/peach/ros2_ws/src/install/urg_node2/lib:/home/peach/ros2_ws/src/lucia_controller/install/lucia_controller/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/peach'), ('OLDPWD', '/home/peach'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'en_US.UTF-8'), ('SYSTEMD_EXEC_PID', '1441'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/peach/ros2_ws/install:/home/peach/install:/home/peach/ros2_ws/src/urdf_tutorial_r2d2/install:/home/peach/ros2_ws/src/install:/home/peach/ros2_ws/src/lucia_controller/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'peach'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'peach'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/peach/ros2_ws/install/ydlidar_sdk/bin:/home/peach/ros2_ws/install/arduino/bin:/opt/ros/humble/bin:/home/peach/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/peach-virtual-machine:@/tmp/.ICE-unix/1400,unix/peach-virtual-machine:/tmp/.ICE-unix/1400'), ('PAPERSIZE', 'letter'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'en_US.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/74d11214_21ff_431a_a395_6e5101e6b2fc'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'en_US.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.XKAXX2'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.438'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/peach/ros2_ws/install/ydlidar_ros2_driver:/home/peach/ros2_ws/install/wiimote:/home/peach/ros2_ws/install/wiimote_msgs:/home/peach/ros2_ws/install/urg_node2:/home/peach/ros2_ws/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/install/urdf_tutorial:/home/peach/ros2_ws/install/urdf_robot:/home/peach/ros2_ws/install/ros2_control:/home/peach/ros2_ws/install/transmission_interface:/home/peach/ros2_ws/install/spacenav:/home/peach/ros2_ws/install/simple_listener:/home/peach/ros2_ws/install/diagnostics:/home/peach/ros2_ws/install/self_test:/home/peach/ros2_ws/install/p9n:/home/peach/ros2_ws/install/p9n_test:/home/peach/ros2_ws/install/p9n_bringup:/home/peach/ros2_ws/install/p9n_node:/home/peach/ros2_ws/install/p9n_example:/home/peach/ros2_ws/install/joy:/home/peach/ros2_ws/install/sdl2_vendor:/home/peach/ros2_ws/install/rqt_controller_manager:/home/peach/ros2_ws/install/lucia_slam:/home/peach/ros2_ws/install/rplidar_ros:/home/peach/ros2_ws/install/rosboard:/home/peach/ros2_ws/install/lucia_controller:/home/peach/ros2_ws/install/ros2controlcli:/home/peach/ros2_ws/install/ros2_workshop:/home/peach/ros2_ws/install/ros2_laser_scan_merger:/home/peach/ros2_ws/install/ros2_frst_test:/home/peach/ros2_ws/install/hardware_interface_testing:/home/peach/ros2_ws/install/ros2_control_test_assets:/home/peach/ros2_ws/install/rf2o_laser_odometry:/home/peach/ros2_ws/install/raspimouse_cartographer:/home/peach/ros2_ws/install/p9n_interface:/home/peach/ros2_ws/install/orale_node:/home/peach/ros2_ws/install/lucia_slam_navigation:/home/peach/ros2_ws/install/lucia_localization:/home/peach/ros2_ws/install/lucia_description:/home/peach/ros2_ws/install/lucia_cartographer:/home/peach/ros2_ws/install/lidar_odometry:/home/peach/ros2_ws/install/learning_tf2_cpp:/home/peach/ros2_ws/install/joy_linux:/home/peach/ros2_ws/install/joint_limits:/home/peach/ros2_ws/install/controller_interface:/home/peach/ros2_ws/install/hardware_interface:/home/peach/ros2_ws/install/diagnostic_common_diagnostics:/home/peach/ros2_ws/install/diagnostic_updater:/home/peach/ros2_ws/install/diagnostic_aggregator:/home/peach/ros2_ws/install/controller_manager_msgs:/home/peach/install/simple_listener:/home/peach/install/ros2_laser_scan_merger:/home/peach/install/ros2_bridage_yarp:/home/peach/install/lucia_controller:/home/peach/ros2_ws/src/urdf_tutorial_r2d2/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urg_node2:/home/peach/ros2_ws/src/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urdf_tutorial:/home/peach/ros2_ws/src/install/urdf_robot:/home/peach/ros2_ws/src/install/ugv02_cartographer:/home/peach/ros2_ws/src/install/simple_receiver_node:/home/peach/ros2_ws/src/install/simple_listener:/home/peach/ros2_ws/src/install/lucia_slam:/home/peach/ros2_ws/src/install/rplidar_ros:/home/peach/ros2_ws/src/install/ros2_workshop:/home/peach/ros2_ws/src/install/ros2_bridage_yarp:/home/peach/ros2_ws/src/install/rf2o_laser_odometry:/home/peach/ros2_ws/src/install/raspimouse_cartographer:/home/peach/ros2_ws/src/install/lucia_urdf:/home/peach/ros2_ws/src/install/lucia_bringup:/home/peach/ros2_ws/src/install/lucia_description:/home/peach/ros2_ws/src/install/lucia_controller:/home/peach/ros2_ws/src/install/loop_subscriber:/home/peach/ros2_ws/src/install/learning_tf2_cpp:/home/peach/ros2_ws/src/lucia_controller/install/lucia_controller:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'en_US.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'en_US.UTF-8'), ('LC_IDENTIFICATION', 'en_US.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/peach/ros2_ws/src/orale_node/build/orale_node'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/peach/ros2_ws/install/wiimote_msgs/local/lib/python3.10/dist-packages:/home/peach/ros2_ws/build/urdf_tutorial_r2d2:/home/peach/ros2_ws/install/urdf_tutorial_r2d2/lib/python3.10/site-packages:/home/peach/ros2_ws/install/urdf_robot/lib/python3.10/site-packages:/home/peach/ros2_ws/build/p9n_bringup:/home/peach/ros2_ws/install/p9n_bringup/lib/python3.10/site-packages:/home/peach/ros2_ws/build/rqt_controller_manager:/home/peach/ros2_ws/install/rqt_controller_manager/lib/python3.10/site-packages:/home/peach/ros2_ws/build/rosboard:/home/peach/ros2_ws/install/rosboard/lib/python3.10/site-packages:/home/peach/ros2_ws/build/ros2controlcli:/home/peach/ros2_ws/install/ros2controlcli/lib/python3.10/site-packages:/home/peach/ros2_ws/install/ros2_workshop/lib/python3.10/site-packages:/home/peach/ros2_ws/install/diagnostic_common_diagnostics/local/lib/python3.10/dist-packages:/home/peach/ros2_ws/install/diagnostic_updater/local/lib/python3.10/dist-packages:/home/peach/ros2_ws/install/diagnostic_aggregator/local/lib/python3.10/dist-packages:/home/peach/ros2_ws/install/controller_manager_msgs/local/lib/python3.10/dist-packages:/home/peach/ros2_ws/src/urdf_tutorial_r2d2/build/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/urdf_tutorial_r2d2/install/urdf_tutorial_r2d2/lib/python3.10/site-packages:/home/peach/ros2_ws/src/install/urdf_tutorial_r2d2/lib/python3.10/site-packages:/home/peach/ros2_ws/src/build/urdf_robot:/home/peach/ros2_ws/src/install/urdf_robot/lib/python3.10/site-packages:/home/peach/ros2_ws/src/build/ros2_workshop:/home/peach/ros2_ws/src/install/ros2_workshop/lib/python3.10/site-packages:/home/peach/ros2_ws/src/install/lucia_description/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'en_US.UTF-8'), ('LC_PAPER', 'en_US.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/peach/ros2_ws/install/ydlidar_sdk:/home/peach/ros2_ws/install/ydlidar_ros2_driver:/home/peach/ros2_ws/install/wiimote:/home/peach/ros2_ws/install/wiimote_msgs:/home/peach/ros2_ws/install/urg_node2:/home/peach/ros2_ws/install/urdf_tutorial:/home/peach/ros2_ws/install/ros2_control:/home/peach/ros2_ws/install/transmission_interface:/home/peach/ros2_ws/install/spacenav:/home/peach/ros2_ws/install/simple_listener:/home/peach/ros2_ws/install/diagnostics:/home/peach/ros2_ws/install/self_test:/home/peach/ros2_ws/install/p9n:/home/peach/ros2_ws/install/p9n_test:/home/peach/ros2_ws/install/p9n_node:/home/peach/ros2_ws/install/p9n_example:/home/peach/ros2_ws/install/joy:/home/peach/ros2_ws/install/sdl2_vendor:/home/peach/ros2_ws/install/lucia_slam:/home/peach/ros2_ws/install/rplidar_ros:/home/peach/ros2_ws/install/lucia_controller:/home/peach/ros2_ws/install/ros2_laser_scan_merger:/home/peach/ros2_ws/install/ros2_frst_test:/home/peach/ros2_ws/install/hardware_interface_testing:/home/peach/ros2_ws/install/ros2_control_test_assets:/home/peach/ros2_ws/install/rf2o_laser_odometry:/home/peach/ros2_ws/install/raspimouse_cartographer:/home/peach/ros2_ws/install/p9n_interface:/home/peach/ros2_ws/install/orale_node:/home/peach/ros2_ws/install/lucia_localization:/home/peach/ros2_ws/install/lucia_bringup:/home/peach/ros2_ws/install/lucia_description:/home/peach/ros2_ws/install/lucia_cartographer:/home/peach/ros2_ws/install/lidar_odometry:/home/peach/ros2_ws/install/learning_tf2_cpp:/home/peach/ros2_ws/install/joy_linux:/home/peach/ros2_ws/install/joint_limits:/home/peach/ros2_ws/install/controller_interface:/home/peach/ros2_ws/install/hardware_interface:/home/peach/ros2_ws/install/diagnostic_common_diagnostics:/home/peach/ros2_ws/install/diagnostic_updater:/home/peach/ros2_ws/install/diagnostic_aggregator:/home/peach/ros2_ws/install/controller_manager_msgs:/home/peach/install/simple_listener:/home/peach/install/ros2_laser_scan_merger:/home/peach/install/ros2_bridage_yarp:/home/peach/install/lucia_controller:/home/peach/ros2_ws/src/install/urg_node2:/home/peach/ros2_ws/src/install/urdf_tutorial:/home/peach/ros2_ws/src/install/ugv02_cartographer:/home/peach/ros2_ws/src/install/simple_receiver_node:/home/peach/ros2_ws/src/install/simple_listener:/home/peach/ros2_ws/src/install/lucia_slam:/home/peach/ros2_ws/src/install/rplidar_ros:/home/peach/ros2_ws/src/install/ros2_bridage_yarp:/home/peach/ros2_ws/src/install/rf2o_laser_odometry:/home/peach/ros2_ws/src/install/lucia_urdf:/home/peach/ros2_ws/src/install/lucia_bringup:/home/peach/ros2_ws/src/install/lucia_description:/home/peach/ros2_ws/src/install/lucia_controller:/home/peach/ros2_ws/src/install/loop_subscriber:/home/peach/ros2_ws/src/install/learning_tf2_cpp:/home/peach/ros2_ws/src/lucia_controller/install/lucia_controller:/home/peach/ros2_ws/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/install/urdf_robot:/home/peach/ros2_ws/install/p9n_bringup:/home/peach/ros2_ws/install/rqt_controller_manager:/home/peach/ros2_ws/install/rosboard:/home/peach/ros2_ws/install/ros2controlcli:/home/peach/ros2_ws/install/ros2_workshop:/home/peach/ros2_ws/install/lucia_slam_navigation:/home/peach/ros2_ws/src/urdf_tutorial_r2d2/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urdf_robot:/home/peach/ros2_ws/src/install/ros2_workshop:/home/peach/ros2_ws/src/install/raspimouse_cartographer:/opt/ros/humble')]), 'shell': False}
+[17.118317] (-) TimerEvent: {}
+[17.136152] (orale_node) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[17.136756] (orale_node) StdoutLine: {'line': b'-- Installing: /home/peach/ros2_ws/src/orale_node/install/orale_node/lib/orale_node/orale_node\n'}
+[17.144566] (orale_node) StdoutLine: {'line': b'-- Set runtime path of "/home/peach/ros2_ws/src/orale_node/install/orale_node/lib/orale_node/orale_node" to ""\n'}
+[17.144931] (orale_node) StdoutLine: {'line': b'-- Installing: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/ament_index/resource_index/package_run_dependencies/orale_node\n'}
+[17.146466] (orale_node) StdoutLine: {'line': b'-- Up-to-date: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/ament_index/resource_index/parent_prefix_path/orale_node\n'}
+[17.146913] (orale_node) StdoutLine: {'line': b'-- Up-to-date: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/environment/ament_prefix_path.sh\n'}
+[17.148426] (orale_node) StdoutLine: {'line': b'-- Installing: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/environment/ament_prefix_path.dsv\n'}
+[17.149534] (orale_node) StdoutLine: {'line': b'-- Up-to-date: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/environment/path.sh\n'}
+[17.149813] (orale_node) StdoutLine: {'line': b'-- Installing: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/environment/path.dsv\n'}
+[17.150034] (orale_node) StdoutLine: {'line': b'-- Up-to-date: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/local_setup.bash\n'}
+[17.150677] (orale_node) StdoutLine: {'line': b'-- Up-to-date: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/local_setup.sh\n'}
+[17.151006] (orale_node) StdoutLine: {'line': b'-- Up-to-date: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/local_setup.zsh\n'}
+[17.151213] (orale_node) StdoutLine: {'line': b'-- Installing: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/local_setup.dsv\n'}
+[17.151392] (orale_node) StdoutLine: {'line': b'-- Installing: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/package.dsv\n'}
+[17.152342] (orale_node) StdoutLine: {'line': b'-- Up-to-date: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/ament_index/resource_index/packages/orale_node\n'}
+[17.152798] (orale_node) StdoutLine: {'line': b'-- Up-to-date: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/cmake/orale_nodeConfig.cmake\n'}
+[17.153164] (orale_node) StdoutLine: {'line': b'-- Up-to-date: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/cmake/orale_nodeConfig-version.cmake\n'}
+[17.153508] (orale_node) StdoutLine: {'line': b'-- Installing: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/package.xml\n'}
+[17.157516] (orale_node) CommandEnded: {'returncode': 0}
+[17.218813] (-) TimerEvent: {}
+[17.225876] (orale_node) JobEnded: {'identifier': 'orale_node', 'rc': 0}
+[17.229844] (-) EventReactorShutdown: {}

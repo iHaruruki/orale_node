@@ -36,13 +36,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 26,
+				"line" : 12,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 0,
-				"line" : 42,
+				"line" : 16,
 				"parent" : 0
 			},
 			{
@@ -226,7 +226,7 @@
 		{
 			"backtrace" : 1,
 			"component" : "Unspecified",
-			"destination" : "bin",
+			"destination" : "lib/orale_node",
 			"paths" : 
 			[
 				"orale_node"

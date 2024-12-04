@@ -23,7 +23,7 @@ public:
     SerialNode() : Node("serial_node") {
         publisher_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
         timer_ = this->create_wall_timer(
-            500ms, std::bind(&SerialNode::timer_callback, this));
+            30ms, std::bind(&SerialNode::timer_callback, this));
         init_serial();
     }
 
