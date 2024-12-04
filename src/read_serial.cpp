@@ -76,12 +76,27 @@ private:
             memset(&read_buf, '\0', sizeof(read_buf));
             read(serial_port_, &read_buf, sizeof(read_buf));
 
-            // データ処理とcmd_velメッセージの作成
-            auto message = geometry_msgs::msg::Twist();
-            // ここでmessage.linear.xやmessage.angular.zを設定
+			// センサの値の読み取りと速度を計算
+			float linear_velocity = calculate_linear_velocity(read_buf);
+			float angular_velocity = calculate_angular_velocity(read_buf);
+
+			// cmd_valメッセージの作成
+			auto message = geometry_msgs::msg::Twist();
+			message.linear.x = linear_velocity;
+			message.angular.z = angular_velocity;
+
+            // cmd_velトピックにパブリッシュ
             publisher_->publish(message);
         }
     }
+
+	float calculate_linear_velocity(uint8_t *read_buf) {
+		return static_cast<float>(read_buf[0]) / 255.0 * 1.5;	// 0~255の値を0~1.5()に変換
+	}
+
+	float calculate_angular_velocity(uint8_t *read_buf) {
+		return static_cast<float>(read_buf[1]) / 255.0 * 3.0 - 1.5;		// 0~255の値を-1.5~1.5に変換
+	}	
 
     int serial_port_;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr publisher_;
