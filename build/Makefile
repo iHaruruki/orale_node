@@ -197,6 +197,43 @@ orale_node_uninstall/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/orale_node_uninstall.dir/build.make CMakeFiles/orale_node_uninstall.dir/build
 .PHONY : orale_node_uninstall/fast
 
+#=============================================================================
+# Target rules for targets named orale_node
+
+# Build rule for target.
+orale_node: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 orale_node
+.PHONY : orale_node
+
+# fast build rule for target.
+orale_node/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/orale_node.dir/build.make CMakeFiles/orale_node.dir/build
+.PHONY : orale_node/fast
+
+src/read_serial.o: src/read_serial.cpp.o
+.PHONY : src/read_serial.o
+
+# target to build an object file
+src/read_serial.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/orale_node.dir/build.make CMakeFiles/orale_node.dir/src/read_serial.cpp.o
+.PHONY : src/read_serial.cpp.o
+
+src/read_serial.i: src/read_serial.cpp.i
+.PHONY : src/read_serial.i
+
+# target to preprocess a source file
+src/read_serial.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/orale_node.dir/build.make CMakeFiles/orale_node.dir/src/read_serial.cpp.i
+.PHONY : src/read_serial.cpp.i
+
+src/read_serial.s: src/read_serial.cpp.s
+.PHONY : src/read_serial.s
+
+# target to generate assembly for a file
+src/read_serial.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/orale_node.dir/build.make CMakeFiles/orale_node.dir/src/read_serial.cpp.s
+.PHONY : src/read_serial.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -212,6 +249,10 @@ help:
 	@echo "... test"
 	@echo "... orale_node_uninstall"
 	@echo "... uninstall"
+	@echo "... orale_node"
+	@echo "... src/read_serial.o"
+	@echo "... src/read_serial.i"
+	@echo "... src/read_serial.s"
 .PHONY : help
 
 

@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /home/peach/ros2_ws/src/orale_node/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all:
+all: CMakeFiles/orale_node.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -73,6 +73,7 @@ preinstall:
 # The main recursive "clean" target.
 clean: CMakeFiles/uninstall.dir/clean
 clean: CMakeFiles/orale_node_uninstall.dir/clean
+clean: CMakeFiles/orale_node.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -126,6 +127,32 @@ orale_node_uninstall: CMakeFiles/orale_node_uninstall.dir/rule
 CMakeFiles/orale_node_uninstall.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/orale_node_uninstall.dir/build.make CMakeFiles/orale_node_uninstall.dir/clean
 .PHONY : CMakeFiles/orale_node_uninstall.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/orale_node.dir
+
+# All Build rule for target.
+CMakeFiles/orale_node.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/orale_node.dir/build.make CMakeFiles/orale_node.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/orale_node.dir/build.make CMakeFiles/orale_node.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/peach/ros2_ws/src/orale_node/build/CMakeFiles --progress-num=1,2 "Built target orale_node"
+.PHONY : CMakeFiles/orale_node.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/orale_node.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/peach/ros2_ws/src/orale_node/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/orale_node.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/peach/ros2_ws/src/orale_node/build/CMakeFiles 0
+.PHONY : CMakeFiles/orale_node.dir/rule
+
+# Convenience name for target.
+orale_node: CMakeFiles/orale_node.dir/rule
+.PHONY : orale_node
+
+# clean rule for target.
+CMakeFiles/orale_node.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/orale_node.dir/build.make CMakeFiles/orale_node.dir/clean
+.PHONY : CMakeFiles/orale_node.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

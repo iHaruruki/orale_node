@@ -16,7 +16,7 @@ set(_orale_node_CONFIG_INCLUDED TRUE)
 
 # output package information
 if(NOT orale_node_FIND_QUIETLY)
-  message(STATUS "Found orale_node: 0.0.0 (${orale_node_DIR})")
+  message(STATUS "Found orale_node: 1.0.0 (${orale_node_DIR})")
 endif()
 
 # warn when using a deprecated package
