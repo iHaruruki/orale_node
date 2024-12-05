@@ -1,6 +1,6 @@
 /home/peach/ros2_ws/src/orale_node/build/CMakeFiles/uninstall.dir
 /home/peach/ros2_ws/src/orale_node/build/CMakeFiles/orale_node_uninstall.dir
-/home/peach/ros2_ws/src/orale_node/build/CMakeFiles/orale_node.dir
+/home/peach/ros2_ws/src/orale_node/build/CMakeFiles/read_serial.dir
 /home/peach/ros2_ws/src/orale_node/build/CMakeFiles/test.dir
 /home/peach/ros2_ws/src/orale_node/build/CMakeFiles/edit_cache.dir
 /home/peach/ros2_ws/src/orale_node/build/CMakeFiles/rebuild_cache.dir

@@ -1,45 +1,40 @@
 #include <rclcpp/rclcpp.hpp>
 #include <geometry_msgs/msg/twist.hpp>
 #include <opencv2/opencv.hpp>
-#include <iostream>
-#include <stdio.h>
-#include <string.h>
-#include <fcntl.h> 
-#include <errno.h> 
-#include <termios.h> 
-#include <unistd.h> 
+#include <fcntl.h>
+#include <termios.h>
+#include <unistd.h>
 #include <sys/ioctl.h>
 #include <bitset>
+#include <sstream>
+#include <algorithm> // for std::min and std::max
 
-using namespace std;
 using namespace cv;
+using namespace std;
 
-class SensorToCmdVel : public rclcpp::Node
-{
+class SensorReader : public rclcpp::Node {
 public:
-    SensorToCmdVel()
-    : Node("sensor_to_cmd_vel"),
-      pos_(Point(-10, -10)),
-      image_(500, 500, CV_8UC3, Scalar(255, 255, 255)),
-      serial_port_(-1),
-      oneces_(0)
+    SensorReader() : Node("sensor_reader"),
+                     serial_port_(-1),
+                     image_(500, 500, CV_8UC3, Scalar(255, 255, 255)),
+                     oneces_(0)
     {
-        // cmd_vel パブリッシャーの作成
+        // パブリッシャーの初期化
         cmd_vel_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
-
-        // タイマーの設定（100msごとにコールバック実行）
+        
+        // タイマーの設定（100msごとに実行）
         timer_ = this->create_wall_timer(
             std::chrono::milliseconds(100),
-            std::bind(&SensorToCmdVel::read_sensor_and_publish, this));
-
-        // シリアルポートの初期化
-        init_serial();
+            std::bind(&SensorReader::timer_callback, this));
 
         // OpenCVウィンドウの作成
         namedWindow("img", WINDOW_AUTOSIZE);
+
+        // シリアルポートの初期化
+        init_serial();
     }
 
-    ~SensorToCmdVel()
+    ~SensorReader()
     {
         if (serial_port_ >= 0) {
             close(serial_port_);
@@ -48,44 +43,37 @@ public:
     }
 
 private:
-    void init_serial()
-    {
-        struct termios tty;
-        memset(&tty, 0, sizeof tty);
-
-        serial_port_ = open("/dev/ttyACM0", O_RDWR);
+    void init_serial() {
+        serial_port_ = open("/dev/ttyACM0", O_RDWR | O_NOCTTY | O_SYNC);
         if (serial_port_ < 0) {
-            RCLCPP_ERROR(this->get_logger(), "Error %i from open: %s", errno, strerror(errno));
+            RCLCPP_ERROR(this->get_logger(), "Failed to open serial port: %s", strerror(errno));
             return;
         }
 
-        if(tcgetattr(serial_port_, &tty) != 0) {
+        struct termios tty;
+        memset(&tty, 0, sizeof tty);
+
+        if (tcgetattr(serial_port_, &tty) != 0) {
             RCLCPP_ERROR(this->get_logger(), "Error %i from tcgetattr: %s", errno, strerror(errno));
             return;
         }
 
-        tty.c_cflag &= ~PARENB; // Disable parity
-        tty.c_cflag &= ~CSTOPB; // 1 stop bit
-        tty.c_cflag |= CS8; // 8 bits per byte
-        tty.c_cflag &= ~CRTSCTS; // Disable RTS/CTS
-        tty.c_cflag |= CREAD | CLOCAL; // Turn on READ & ignore ctrl lines
-
-        tty.c_lflag &= ~ICANON;
-        tty.c_lflag &= ~ECHO; // Disable echo
-        tty.c_lflag &= ~ECHOE; // Disable erasure
-        tty.c_lflag &= ~ECHONL; // Disable new-line echo
-        tty.c_lflag &= ~ISIG; // Disable interpretation of INTR, QUIT and SUSP
-
-        tty.c_iflag &= ~(IGNBRK|BRKINT|PARMRK|ISTRIP|INLCR|IGNCR|ICRNL);
-        tty.c_oflag &= ~OPOST; // Prevent special interpretation of output bytes
-        tty.c_oflag &= ~ONLCR; // Prevent conversion of newline to carriage return/line feed
-
-        tty.c_cc[VTIME] = 10; // 1 second timeout
-        tty.c_cc[VMIN] = 0;
-
-        // Set baud rate
-        cfsetispeed(&tty, B9600);
+        // シリアルポートの設定
         cfsetospeed(&tty, B9600);
+        cfsetispeed(&tty, B9600);
+
+        tty.c_cflag = (tty.c_cflag & ~CSIZE) | CS8;     // 8 bits per byte
+        tty.c_iflag &= ~IGNBRK;                         // disable break processing
+        tty.c_lflag = 0;                                // no signaling chars, no echo
+        tty.c_oflag = 0;                                // no remapping, no delays
+        tty.c_cc[VMIN]  = 0;                            // read doesn't block
+        tty.c_cc[VTIME] = 5;                            // 0.5 seconds read timeout
+
+        tty.c_iflag &= ~(IXON | IXOFF | IXANY);         // shut off xON/xOFF ctrl
+        tty.c_cflag |= (CLOCAL | CREAD);                // ignore modem controls, enable reading
+        tty.c_cflag &= ~(PARENB | PARODD);              // shut off parity
+        tty.c_cflag &= ~CSTOPB;                         // 1 stop bit
+        tty.c_cflag &= ~CRTSCTS;                        // no flow control
 
         if (tcsetattr(serial_port_, TCSANOW, &tty) != 0) {
             RCLCPP_ERROR(this->get_logger(), "Error %i from tcsetattr: %s", errno, strerror(errno));
@@ -95,18 +83,20 @@ private:
         RCLCPP_INFO(this->get_logger(), "Serial port initialized.");
     }
 
-    void read_sensor_and_publish()
-    {
+    void timer_callback() {
         if (serial_port_ < 0) {
             RCLCPP_ERROR(this->get_logger(), "Serial port not initialized.");
             return;
         }
 
         uint8_t bytesWaiting;
-        ioctl(serial_port_, FIONREAD, &bytesWaiting);
+        if (ioctl(serial_port_, FIONREAD, &bytesWaiting) < 0) {
+            RCLCPP_ERROR(this->get_logger(), "ioctl FIONREAD failed: %s", strerror(errno));
+            return;
+        }
 
         if (bytesWaiting > 25) {
-            uint8_t read_buf[bytesWaiting + 1];
+            uint8_t read_buf[256];
             memset(read_buf, 0, sizeof(read_buf));
             int n = read(serial_port_, read_buf, sizeof(read_buf));
 
@@ -115,112 +105,158 @@ private:
                 return;
             }
 
-            // 特定のデータパターンを探す
-            int start_idx = -1;
-            for(int i = 0; i < n - 13; i++) { // シーケンス長を考慮
-                if(read_buf[i] == 0xff && read_buf[i+1] == 0xff && read_buf[i+2] != 0xff &&
-                   read_buf[i+12] == 0xff && read_buf[i+13] == 0xff) {
-                    start_idx = i + 2;
-                    break;
-                }
-            }
-
-            if(start_idx == -1) {
-                RCLCPP_WARN(this->get_logger(), "Start sequence not found.");
+            if (n == 0) {
+                RCLCPP_WARN(this->get_logger(), "No data read from serial port.");
                 return;
             }
 
-            // データをgにコピー
-            memcpy(g_, &read_buf[start_idx], sizeof(g_));
+            process_data(read_buf, n);
+        }
+    }
 
-            // bset1~bset5を生成
-            for(int j = 0; j < 5; j++) {
-                bset_[j][0] = (g_[j*2] << 8) | g_[j*2 + 1];
+    void process_data(uint8_t* data, int size) {
+        // ここでは最大10バイトをg_にコピー
+        memset(g_, 0, sizeof(g_));
+        memcpy(g_, data, std::min(size, static_cast<int>(sizeof(g_))));
+
+        // センサー値の更新
+        update_sensor_values();
+
+        // 位置計算と速度指令値の生成
+        calculate_and_publish_velocity();
+
+        // 画像の更新と表示
+        update_display();
+    }
+
+    void update_sensor_values() {
+        bset1_[0] = (g_[0] << 8) | g_[1];
+        bset2_[0] = (g_[2] << 8) | g_[3];
+        bset3_[0] = (g_[4] << 8) | g_[5];
+        bset4_[0] = (g_[6] << 8) | g_[7];
+        bset5_[0] = (g_[8] << 8) | g_[9];
+
+        // センサー値をログ出力
+        RCLCPP_INFO(this->get_logger(), "b1data: %d", bset1_[0]);
+        RCLCPP_INFO(this->get_logger(), "b2data: %d", bset2_[0]);
+        RCLCPP_INFO(this->get_logger(), "b3data: %d", bset3_[0]);
+        RCLCPP_INFO(this->get_logger(), "b4data: %d", bset4_[0]);
+        RCLCPP_INFO(this->get_logger(), "b5data: %d", bset5_[0]);
+    }
+
+    void calculate_and_publish_velocity() {
+        int x = calculate_x_position();
+
+        // 速度指令値の生成と発行
+        auto twist_msg = geometry_msgs::msg::Twist();
+        twist_msg.linear.x = map_to_velocity(x);
+        cmd_vel_pub_->publish(twist_msg);
+
+        RCLCPP_INFO(this->get_logger(), "Publishing cmd_vel: linear.x = %f", twist_msg.linear.x);
+    }
+
+    void update_display() {
+        // 画像を白でクリア
+        image_ = cv::Scalar(255, 255, 255);
+
+        // センサー値に基づいて円を描画
+        draw_sensor_circles();
+
+        // OpenCVウィンドウの更新
+        cv::imshow("img", image_);
+        cv::waitKey(1);
+    }
+
+    int calculate_x_position() {
+        float weighted_sum_x = 0.0f;
+        float weight_sum = 0.0f;
+
+        // センサー位置の定義
+        const std::pair<int, int> sensor_positions[] = {
+            {250, 250},  // センター
+            {250, 125},  // 上
+            {250, 375},  // 下
+            {125, 250},  // 左
+            {375, 250}   // 右
+        };
+
+        const uint16_t* sensor_values[] = {
+            bset1_, bset2_, bset3_, bset4_, bset5_
+        };
+
+        for (int i = 0; i < 5; i++) {
+            float weight = static_cast<float>(sensor_values[i][0]);
+            weighted_sum_x += weight * sensor_positions[i].first;
+            weight_sum += weight;
+        }
+
+        if (weight_sum > 0.0f) {
+            return static_cast<int>(weighted_sum_x / weight_sum);
+        }
+        return 250; // デフォルト値（中央）
+    }
+
+    float map_to_velocity(int x) {
+        const float MAX_VEL = 1.0f;  // 最大速度[m/s]
+        // xを0-500の範囲から0-MAX_VELにスケール
+        return (static_cast<float>(x) / 500.0f) * MAX_VEL;
+    }
+
+    void draw_sensor_circles() {
+        const std::pair<int, int> positions[] = {
+            {250, 250},  // センター
+            {250, 125},  // 上
+            {250, 375},  // 下
+            {125, 250},  // 左
+            {375, 250}   // 右
+        };
+
+        const uint16_t* values[] = {
+            bset1_, bset2_, bset3_, bset4_, bset5_
+        };
+
+        // 各センサーの円を描画
+        for (int i = 0; i < 5; i++) {
+            // センサー値のスケーリングを調整（0-1000の範囲を想定）
+            float normalized_value = static_cast<float>(values[i][0]) / 1000.0f;
+            
+            // 半径を計算（最小20、最大100）
+            int radius = static_cast<int>(20 + normalized_value * 80);
+            radius = std::max(20, std::min(100, radius));
+
+            try {
+                cv::circle(image_,
+                          cv::Point(positions[i].first, positions[i].second),
+                          radius,
+                          cv::Scalar(255, 0, 0),  // 青色
+                          2);  // 線の太さ
+                
+                RCLCPP_DEBUG(this->get_logger(), 
+                    "Drawing circle %d: pos=(%d,%d), radius=%d", 
+                    i, positions[i].first, positions[i].second, radius);
             }
-
-            // 最小値の更新
-            for(int j = 0; j < 5; j++) {
-                if(min_[j][0] == 0 && bset_[j][0] != 0 && (bset_[j][0] - bset_prev_[j][0]) >= 0) {
-                    min_[j][0] = bset_[j][0];
-                }
+            catch (const cv::Exception& e) {
+                RCLCPP_ERROR(this->get_logger(), 
+                    "OpenCV error while drawing circle %d: %s", 
+                    i, e.what());
             }
+        }
 
-            // すべてのminが更新されたか確認
-            bool all_min_updated = true;
-            for(int j = 0; j < 5; j++) {
-                if(min_[j][0] == 0) {
-                    all_min_updated = false;
-                    break;
-                }
-            }
+        // 現在位置の表示（赤い点）
+        try {
+            int current_x = calculate_x_position();
+            current_x = std::max(10, std::min(490, current_x));
 
-            if(all_min_updated && oneces_ == 0) {
-                oneces_ = 1;
-            }
-
-            // 前回のbsetを更新
-            for(int j = 0; j < 5; j++) {
-                bset_prev_[j][0] = bset_[j][0];
-            }
-
-            // データの表示
-            for(int j = 0; j < 5; j++) {
-                RCLCPP_INFO(this->get_logger(), "b%ddata: %d", j+1, bset_[j][0]);
-            }
-
-            // 速度計算の条件
-            int border = 130;
-            bool above_border = true;
-            for(int j = 0; j < 5; j++) {
-                if(bset_[j][0] <= border) {
-                    above_border = false;
-                    break;
-                }
-            }
-
-            if(above_border) {
-                uint16_t scor = 710;
-
-                float mh[5];
-                float mh_ratio[5];
-                for(int j = 0; j < 5; j++) {
-                    mh[j] = static_cast<float>(bset_[j][0] - min_[j][0]);
-                    mh_ratio[j] = static_cast<float>(mh[j]) / static_cast<float>(scor - min_[j][0]);
-                }
-
-                float s[5];
-                for(int j = 0; j < 5; j++) {
-                    s[j] = mh[j] / mh_ratio[j];
-                }
-
-                // OpenCV描画
-                image_ = Scalar(255, 255, 255); // 白で初期化
-                circle(image_, Point(250,250), static_cast<int>(35 + (65 * s[0])), Scalar(255, 0, 0), 2);
-                circle(image_, Point(250,125), static_cast<int>(35 + (65 * s[1])), Scalar(255, 0, 0), 2);
-                circle(image_, Point(250,375), static_cast<int>(35 + (65 * s[2])), Scalar(255, 0, 0), 2);
-                circle(image_, Point(125,250), static_cast<int>(35 + (65 * s[3])), Scalar(255, 0, 0), 2);
-                circle(image_, Point(375,250), static_cast<int>(35 + (65 * s[4])), Scalar(255, 0, 0), 2);
-
-                int x = static_cast<int>((s[0]*250 + s[1]*250 + s[2]*250 + s[3]*25 + s[4]*475) / (s[0] + s[1] + s[2] + s[3] + s[4]));
-                int y = static_cast<int>((s[0]*250 + s[1]*25 + s[2]*475 + s[3]*250 + s[4]*250) / (s[0] + s[1] + s[2] + s[3] + s[4]));
-
-                circle(image_, Point(x, y), 10, Scalar(0, 0, 255), -1);
-
-                // 速度計算
-                const float MAX_LINEAR_VELOCITY = 1.0; // 適切な最大速度に設定
-                float linear_speed = (static_cast<float>(x) / 500.0f) * MAX_LINEAR_VELOCITY; // スケール調整
-
-                // cmd_vel メッセージの作成とパブリッシュ
-                geometry_msgs::msg::Twist cmd_vel_msg;
-                cmd_vel_msg.linear.x = linear_speed;
-                cmd_vel_pub_->publish(cmd_vel_msg);
-
-                RCLCPP_INFO(this->get_logger(), "Publishing cmd_vel: linear.x = %f", linear_speed);
-            }
-
-            // OpenCVウィンドウの更新
-            imshow("img", image_);
-            waitKey(1);
+            cv::circle(image_,
+                      cv::Point(current_x, 250),
+                      10,  // 固定半径
+                      cv::Scalar(0, 0, 255),  // 赤色
+                      -1);  // 塗りつぶし
+        }
+        catch (const cv::Exception& e) {
+            RCLCPP_ERROR(this->get_logger(), 
+                "OpenCV error while drawing position marker: %s", 
+                e.what());
         }
     }
 
@@ -228,20 +264,17 @@ private:
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmd_vel_pub_;
     rclcpp::TimerBase::SharedPtr timer_;
     int serial_port_;
-    Mat image_;
-    Point pos_;
+    cv::Mat image_;
     int oneces_;
 
     uint8_t g_[10];
-    uint16_t bset_[5][1];      // bset1 ~ bset5
-    uint16_t bset_prev_[5][1]; // bset12 ~ bset52
-    uint16_t min_[5][1];        // min1 ~ min5
+    uint16_t bset1_[1], bset2_[1], bset3_[1], bset4_[1], bset5_[1];
+    uint16_t min1_[1], min2_[1], min3_[1], min4_[1], min5_[1];
 };
 
-int main(int argc, char * argv[])
-{
+int main(int argc, char** argv) {
     rclcpp::init(argc, argv);
-    auto node = std::make_shared<SensorToCmdVel>();
+    auto node = std::make_shared<SensorReader>();
     rclcpp::spin(node);
     rclcpp::shutdown();
     return 0;

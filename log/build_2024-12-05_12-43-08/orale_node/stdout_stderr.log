@@ -1,0 +1,125 @@
+-- Found ament_cmake: 1.3.10 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found rclcpp: 16.0.10 (/opt/ros/humble/share/rclcpp/cmake)
+-- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+-- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+-- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+-- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Found geometry_msgs: 4.2.4 (/opt/ros/humble/share/geometry_msgs/cmake)
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/peach/ros2_ws/src/orale_node/build/orale_node
+[35m[1mConsolidate compiler generated dependencies of target orale_node[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/orale_node.dir/src/read_serial.cpp.o[0m
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:325:2:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K}[m[K’ at end of input
+  325 | }
+      |  [01;31m[K^[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:18:1:[m[K [01;36m[Knote: [m[Kto match this ‘[01m[K{[m[K’
+   18 | [01;36m[K{[m[K
+      | [01;36m[K^[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:[m[K In constructor ‘[01m[KSensorToCmdVel::SensorToCmdVel()[m[K’:
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:22:7:[m[K [01;31m[Kerror: [m[Kclass ‘[01m[KSensorToCmdVel[m[K’ does not have any field named ‘[01m[Kpos_[m[K’
+   22 |       [01;31m[Kpos_[m[K(Point(-10, -10)),
+      |       [01;31m[K^~~~[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:23:7:[m[K [01;31m[Kerror: [m[Kclass ‘[01m[KSensorToCmdVel[m[K’ does not have any field named ‘[01m[Kimage_[m[K’
+   23 |       [01;31m[Kimage_[m[K(500, 500, CV_8UC3, Scalar(255, 255, 255)),
+      |       [01;31m[K^~~~~~[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:24:7:[m[K [01;31m[Kerror: [m[Kclass ‘[01m[KSensorToCmdVel[m[K’ does not have any field named ‘[01m[Kserial_port_[m[K’
+   24 |       [01;31m[Kserial_port_[m[K(-1),
+      |       [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:25:7:[m[K [01;31m[Kerror: [m[Kclass ‘[01m[KSensorToCmdVel[m[K’ does not have any field named ‘[01m[Koneces_[m[K’
+   25 |       [01;31m[Koneces_[m[K(0)
+      |       [01;31m[K^~~~~~~[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:28:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmd_vel_pub_[m[K’ was not declared in this scope
+   28 |         [01;31m[Kcmd_vel_pub_[m[K = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
+      |         [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:31:9:[m[K [01;31m[Kerror: [m[K‘[01m[Ktimer_[m[K’ was not declared in this scope; did you mean ‘[01m[Ktimer_t[m[K’?
+   31 |         [01;31m[Ktimer_[m[K = this->create_wall_timer(
+      |         [01;31m[K^~~~~~[m[K
+      |         [32m[Ktimer_t[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:[m[K In destructor ‘[01m[Kvirtual SensorToCmdVel::~SensorToCmdVel()[m[K’:
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:44:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kserial_port_[m[K’ was not declared in this scope
+   44 |         if ([01;31m[Kserial_port_[m[K >= 0) {
+      |             [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:[m[K In member function ‘[01m[Kvoid SensorToCmdVel::init_serial()[m[K’:
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:56:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kserial_port_[m[K’ was not declared in this scope
+   56 |         [01;31m[Kserial_port_[m[K = open("/dev/ttyACM0", O_RDWR);
+      |         [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:[m[K In member function ‘[01m[Kvoid SensorToCmdVel::read_sensor_and_publish()[m[K’:
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:100:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kserial_port_[m[K’ was not declared in this scope
+  100 |         if ([01;31m[Kserial_port_[m[K < 0) {
+      |             [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:106:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kserial_port_[m[K’ was not declared in this scope
+  106 |         ioctl([01;31m[Kserial_port_[m[K, FIONREAD, &bytesWaiting);
+      |               [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:134:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kg_[m[K’ was not declared in this scope
+  134 |             memcpy([01;31m[Kg_[m[K, &read_buf[start_idx], sizeof(g_));
+      |                    [01;31m[K^~[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:138:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kbset_[m[K’ was not declared in this scope
+  138 |                 [01;31m[Kbset_[m[K[j][0] = (g_[j*2] << 8) | g_[j*2 + 1];
+      |                 [01;31m[K^~~~~[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:143:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kmin_[m[K’ was not declared in this scope
+  143 |                 if([01;31m[Kmin_[m[K[j][0] == 0 && bset_[j][0] != 0 && (bset_[j][0] - bset_prev_[j][0]) >= 0) {
+      |                    [01;31m[K^~~~[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:143:39:[m[K [01;31m[Kerror: [m[K‘[01m[Kbset_[m[K’ was not declared in this scope
+  143 |                 if(min_[j][0] == 0 && [01;31m[Kbset_[m[K[j][0] != 0 && (bset_[j][0] - bset_prev_[j][0]) >= 0) {
+      |                                       [01;31m[K^~~~~[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:143:74:[m[K [01;31m[Kerror: [m[K‘[01m[Kbset_prev_[m[K’ was not declared in this scope
+  143 |    if(min_[j][0] == 0 && bset_[j][0] != 0 && (bset_[j][0] - [01;31m[Kbset_prev_[m[K[j][0]) >= 0) {
+      |                                                             [01;31m[K^~~~~~~~~~[m[K
+
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:151:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kmin_[m[K’ was not declared in this scope
+  151 |                 if([01;31m[Kmin_[m[K[j][0] == 0) {
+      |                    [01;31m[K^~~~[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:157:35:[m[K [01;31m[Kerror: [m[K‘[01m[Koneces_[m[K’ was not declared in this scope
+  157 |             if(all_min_updated && [01;31m[Koneces_[m[K == 0) {
+      |                                   [01;31m[K^~~~~~~[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:163:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kbset_prev_[m[K’ was not declared in this scope
+  163 |                 [01;31m[Kbset_prev_[m[K[j][0] = bset_[j][0];
+      |                 [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:163:36:[m[K [01;31m[Kerror: [m[K‘[01m[Kbset_[m[K’ was not declared in this scope
+  163 |                 bset_prev_[j][0] = [01;31m[Kbset_[m[K[j][0];
+      |                                    [01;31m[K^~~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:1[m[K:
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:168:69:[m[K [01;31m[Kerror: [m[K‘[01m[Kbset_[m[K’ was not declared in this scope
+  168 |         RCLCPP_INFO(this->get_logger(), "b%ddata: %d", j+1, [01;31m[Kbset_[m[K[j][0]);
+      |                                                             [01;31m[K^~~~~[m[K
+
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:175:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kbset_[m[K’ was not declared in this scope
+  175 |                 if([01;31m[Kbset_[m[K[j][0] <= border) {
+      |                    [01;31m[K^~~~~[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:188:48:[m[K [01;31m[Kerror: [m[K‘[01m[Kbset_[m[K’ was not declared in this scope
+  188 |                     mh[j] = static_cast<float>([01;31m[Kbset_[m[K[j][0] - min_[j][0]);
+      |                                                [01;31m[K^~~~~[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:188:62:[m[K [01;31m[Kerror: [m[K‘[01m[Kmin_[m[K’ was not declared in this scope
+  188 |                    mh[j] = static_cast<float>(bset_[j][0] - [01;31m[Kmin_[m[K[j][0]);
+      |                                                             [01;31m[K^~~~[m[K
+
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:210:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kimage_[m[K’ was not declared in this scope
+  210 |                 [01;31m[Kimage_[m[K = Scalar(255, 255, 255); // 白で初期化
+      |                 [01;31m[K^~~~~~[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:294:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kcmd_vel_pub_[m[K’ was not declared in this scope; did you mean ‘[01m[Kcmd_vel_msg[m[K’?
+  294 |                 [01;31m[Kcmd_vel_pub_[m[K->publish(cmd_vel_msg);
+      |                 [01;31m[K^~~~~~~~~~~~[m[K
+      |                 [32m[Kcmd_vel_msg[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:[m[K At global scope:
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:325:2:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id at end of input
+  325 | }
+      |  [01;31m[K^[m[K
+gmake[2]: *** [CMakeFiles/orale_node.dir/build.make:76: CMakeFiles/orale_node.dir/src/read_serial.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/orale_node.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2
