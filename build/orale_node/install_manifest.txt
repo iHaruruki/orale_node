@@ -1,4 +1,4 @@
-/home/peach/ros2_ws/src/orale_node/install/orale_node/lib/orale_node/orale_node
+/home/peach/ros2_ws/src/orale_node/install/orale_node/lib/orale_node/read_serial
 /home/peach/ros2_ws/src/orale_node/install/orale_node/share/ament_index/resource_index/package_run_dependencies/orale_node
 /home/peach/ros2_ws/src/orale_node/install/orale_node/share/ament_index/resource_index/parent_prefix_path/orale_node
 /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/environment/ament_prefix_path.sh

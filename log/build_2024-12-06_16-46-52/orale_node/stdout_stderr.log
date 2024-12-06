@@ -1,0 +1,178 @@
+[35m[1mConsolidate compiler generated dependencies of target read_serial[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/read_serial.dir/src/read_serial.cpp.o[0m
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:[m[K In constructor ‘[01m[KSensorReader::SensorReader()[m[K’:
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:31:5:[m[K [01;31m[Kerror: [m[Kexpected identifier before ‘[01m[K{[m[K’ token
+   31 |     [01;31m[K{[m[K
+      |     [01;31m[K^[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:[m[K In member function ‘[01m[Kvoid SensorReader::init_serial()[m[K’:
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:69:41:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K)[m[K’ token
+   69 |         if (tcgetattr(serial_port_, &tty[01;31m[K)[m[K != 0) {
+      |                                         [01;31m[K^[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:75:25:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K,[m[K’ token
+   75 |         cfsetospeed(&tty[01;31m[K,[m[K B9600);
+      |                         [01;31m[K^[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:76:25:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K,[m[K’ token
+   76 |         cfsetispeed(&tty[01;31m[K,[m[K B9600);
+      |                         [01;31m[K^[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:78:12:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[K.[m[K’ token
+   78 |         tty[01;31m[K.[m[Kc_cflag &= ~PARENB; // Clear parity bit, disabling parity (most common)
+      |            [01;31m[K^[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:79:12:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[K.[m[K’ token
+   79 |         tty[01;31m[K.[m[Kc_cflag &= ~CSTOPB; // Clear stop field, only one stop bit used in communication (most common)
+      |            [01;31m[K^[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:80:12:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[K.[m[K’ token
+   80 |         tty[01;31m[K.[m[Kc_cflag |= CS8; // 8 bits per byte (most common)
+      |            [01;31m[K^[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:81:12:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[K.[m[K’ token
+   81 |         tty[01;31m[K.[m[Kc_cflag &= ~CRTSCTS; // Disable RTS/CTS hardware flow control (most common)
+      |            [01;31m[K^[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:82:12:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[K.[m[K’ token
+   82 |         tty[01;31m[K.[m[Kc_cflag |= CREAD | CLOCAL; // Turn on READ & ignore ctrl lines (CLOCAL = 1)
+      |            [01;31m[K^[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:83:12:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[K.[m[K’ token
+   83 |         tty[01;31m[K.[m[Kc_lflag &= ~ICANON;
+      |            [01;31m[K^[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:84:12:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[K.[m[K’ token
+   84 |         tty[01;31m[K.[m[Kc_lflag &= ~ECHO; // Disable echo
+      |            [01;31m[K^[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:85:12:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[K.[m[K’ token
+   85 |         tty[01;31m[K.[m[Kc_lflag &= ~ECHOE; // Disable erasure
+      |            [01;31m[K^[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:86:12:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[K.[m[K’ token
+   86 |         tty[01;31m[K.[m[Kc_lflag &= ~ECHONL; // Disable new-line echo
+      |            [01;31m[K^[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:87:12:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[K.[m[K’ token
+   87 |         tty[01;31m[K.[m[Kc_lflag &= ~ISIG; // Disable interpretation of INTR, QUIT and SUSP
+      |            [01;31m[K^[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:88:12:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[K.[m[K’ token
+   88 |         tty[01;31m[K.[m[Kc_iflag &= ~(IGNBRK|BRKINT|PARMRK|ISTRIP|INLCR|IGNCR|ICRNL); // Disable any special handling of received bytes
+      |            [01;31m[K^[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:89:12:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[K.[m[K’ token
+   89 |         tty[01;31m[K.[m[Kc_oflag &= ~OPOST; // Prevent special interpretation of output bytes (e.g. newline chars)
+      |            [01;31m[K^[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:90:12:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[K.[m[K’ token
+   90 |         tty[01;31m[K.[m[Kc_oflag &= ~ONLCR; // Prevent conversion of newline to carriage return/line feed
+      |            [01;31m[K^[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:91:12:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[K.[m[K’ token
+   91 |         tty[01;31m[K.[m[Kc_cc[VTIME] = 10;
+      |            [01;31m[K^[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:92:12:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[K.[m[K’ token
+   92 |         tty[01;31m[K.[m[Kc_cc[VMIN] = 0; // 0 means read doesn't block
+      |            [01;31m[K^[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:94:50:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K)[m[K’ token
+   94 |         if (tcsetattr(serial_port_, TCSANOW, &tty[01;31m[K)[m[K != 0) {
+      |                                                  [01;31m[K^[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:[m[K In member function ‘[01m[Kvoid SensorReader::timer_callback()[m[K’:
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:117:25:[m[K [01;31m[Kerror: [m[K‘[01m[Kuit8_t[m[K’ was not declared in this scope; did you mean ‘[01m[Kuint8_t[m[K’?
+  117 |             std::vector<[01;31m[Kuit8_t[m[K> read_buf(byteswaiting);
+      |                         [01;31m[K^~~~~~[m[K
+      |                         [32m[Kuint8_t[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:117:31:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  117 |             std::vector<uit8_t[01;31m[K>[m[K read_buf(byteswaiting);
+      |                               [01;31m[K^[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:117:31:[m[K [01;31m[Kerror: [m[Ktemplate argument 2 is invalid
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:118:20:[m[K [01;31m[Kerror: [m[Kinvalid conversion from ‘[01m[Kint[m[K’ to ‘[01m[Kvoid*[m[K’ [[01;31m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-fpermissive-fpermissive]8;;[m[K]
+  118 |             memset([01;31m[Kread_buf[m[K, '\0', sizeof(read_buf));
+      |                    [01;31m[K^~~~~~~~[m[K
+      |                    [01;31m[K|[m[K
+      |                    [01;31m[Kint[m[K
+In file included from [01m[K/opt/ros/humble/include/rcutils/rcutils/error_handling.h:34[m[K,
+                 from [01m[K/opt/ros/humble/include/rcutils/rcutils/logging.h:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rmw/rmw/types.h:28[m[K,
+                 from [01m[K/opt/ros/humble/include/rcl/rcl/types.h:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rcl/rcl/log_level.h:22[m[K,
+                 from [01m[K/opt/ros/humble/include/rcl/rcl/arguments.h:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rcl/rcl/context.h:28[m[K,
+                 from [01m[K/opt/ros/humble/include/rcl/rcl/guard_condition.h:26[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:30[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:1[m[K:
+[01m[K/usr/include/string.h:61:28:[m[K [01;36m[Knote: [m[K  initializing argument 1 of ‘[01m[Kvoid* memset(void*, int, size_t)[m[K’
+   61 | extern void *memset ([01;36m[Kvoid *__s[m[K, int __c, size_t __n) __THROW __nonnull ((1));
+      |                      [01;36m[K~~~~~~^~~[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:1[m[K:
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:122:67:[m[K [01;31m[Kerror: [m[Kinvalid types ‘[01m[Kint[int][m[K’ for array subscript
+  122 |             RCLCPP_INFO(this->get_logger(), "3r_bsz(%d)", read_buf[01;31m[K[[m[K0]);
+      |                                                                   [01;31m[K^[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:124:80:[m[K [01;31m[Kerror: [m[Kinvalid types ‘[01m[Kint[int][m[K’ for array subscript
+  124 | INFO(this->get_logger(), "6r_bBy:", std::bitset<16>{read_buf[01;31m[K[[m[K0]}.to_string());
+      |                                                             [01;31m[K^[m[K
+
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:124:83:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kstd::bitset<16>::bitset(<brace-enclosed initializer list>)[m[K’
+  124 | O(this->get_logger(), "6r_bBy:", std::bitset<16>{read_buf[0][01;31m[K}[m[K.to_string());
+      |                                                             [01;31m[K^[m[K
+
+In file included from [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:17[m[K:
+[01m[K/usr/include/c++/11/bitset:946:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _CharT> std::bitset<_Nb>::bitset(const _CharT*, typename std::__cxx11::basic_string<_CharT>::size_type, _CharT, _CharT) [with _CharT = _CharT; long unsigned int _Nb = 16][m[K’
+  946 |         [01;36m[Kbitset[m[K(const _CharT* __str,
+      |         [01;36m[K^~~~~~[m[K
+[01m[K/usr/include/c++/11/bitset:946:9:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/usr/include/c++/11/bitset:925:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _CharT, class _Traits, class _Alloc> std::bitset<_Nb>::bitset(const std::__cxx11::basic_string<_CharT2, _Traits2, _Alloc>&, std::size_t, std::size_t, _CharT, _CharT) [with _CharT = _CharT; _Traits = _Traits; _Alloc = _Alloc; long unsigned int _Nb = 16][m[K’
+  925 |         [01;36m[Kbitset[m[K(const std::basic_string<_CharT, _Traits, _Alloc>& __s,
+      |         [01;36m[K^~~~~~[m[K
+[01m[K/usr/include/c++/11/bitset:925:9:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/usr/include/c++/11/bitset:914:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _CharT, class _Traits, class _Alloc> std::bitset<_Nb>::bitset(const std::__cxx11::basic_string<_CharT2, _Traits2, _Alloc>&, std::size_t, std::size_t) [with _CharT = _CharT; _Traits = _Traits; _Alloc = _Alloc; long unsigned int _Nb = 16][m[K’
+  914 |         [01;36m[Kbitset[m[K(const std::basic_string<_CharT, _Traits, _Alloc>& __s,
+      |         [01;36m[K^~~~~~[m[K
+[01m[K/usr/include/c++/11/bitset:914:9:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/usr/include/c++/11/bitset:893:9:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _CharT, class _Traits, class _Alloc> std::bitset<_Nb>::bitset(const std::__cxx11::basic_string<_CharT2, _Traits2, _Alloc>&, std::size_t) [with _CharT = _CharT; _Traits = _Traits; _Alloc = _Alloc; long unsigned int _Nb = 16][m[K’
+  893 |         [01;36m[Kbitset[m[K(const std::basic_string<_CharT, _Traits, _Alloc>& __s,
+      |         [01;36m[K^~~~~~[m[K
+[01m[K/usr/include/c++/11/bitset:893:9:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/usr/include/c++/11/bitset:874:17:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconstexpr std::bitset<_Nb>::bitset(long long unsigned int) [with long unsigned int _Nb = 16][m[K’
+  874 |       constexpr [01;36m[Kbitset[m[K(unsigned long long __val) noexcept
+      |                 [01;36m[K^~~~~~[m[K
+[01m[K/usr/include/c++/11/bitset:874:17:[m[K [01;36m[Knote: [m[K  conversion of argument 1 would be ill-formed:
+[01m[K/usr/include/c++/11/bitset:869:26:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconstexpr std::bitset<_Nb>::bitset() [with long unsigned int _Nb = 16][m[K’
+  869 |       _GLIBCXX_CONSTEXPR [01;36m[Kbitset[m[K() _GLIBCXX_NOEXCEPT
+      |                          [01;36m[K^~~~~~[m[K
+[01m[K/usr/include/c++/11/bitset:869:26:[m[K [01;36m[Knote: [m[K  candidate expects 0 arguments, 1 provided
+[01m[K/usr/include/c++/11/bitset:751:11:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconstexpr std::bitset<16>::bitset(const std::bitset<16>&)[m[K’
+  751 |     class [01;36m[Kbitset[m[K
+      |           [01;36m[K^~~~~~[m[K
+[01m[K/usr/include/c++/11/bitset:751:11:[m[K [01;36m[Knote: [m[K  conversion of argument 1 would be ill-formed:
+[01m[K/usr/include/c++/11/bitset:751:11:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconstexpr std::bitset<16>::bitset(std::bitset<16>&&)[m[K’
+[01m[K/usr/include/c++/11/bitset:751:11:[m[K [01;36m[Knote: [m[K  conversion of argument 1 would be ill-formed:
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:127:26:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Klong unsigned int[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  127 |             for(i = 0; [01;35m[Ki < sizeof(read_buf)[m[K; i++){
+      |                        [01;35m[K~~^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:128:29:[m[K [01;31m[Kerror: [m[Kinvalid types ‘[01m[Kint[int][m[K’ for array subscript
+  128 |                 if((read_buf[01;31m[K[[m[Ki] == 0xff) && (read_buf[i+1] == 0xff) && (read_buf[i+2] != 0xff) && (read_buf[i+12] == 0xff) && (read_buf[i+13] == 0xff)){
+      |                             [01;31m[K^[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:128:54:[m[K [01;31m[Kerror: [m[Kinvalid types ‘[01m[Kint[int][m[K’ for array subscript
+  128 |                 if((read_buf[i] == 0xff) && (read_buf[01;31m[K[[m[Ki+1] == 0xff) && (read_buf[i+2] != 0xff) && (read_buf[i+12] == 0xff) && (read_buf[i+13] == 0xff)){
+      |                                                      [01;31m[K^[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:128:81:[m[K [01;31m[Kerror: [m[Kinvalid types ‘[01m[Kint[int][m[K’ for array subscript
+  128 | read_buf[i] == 0xff) && (read_buf[i+1] == 0xff) && (read_buf[01;31m[K[[m[Ki+2] != 0xff) && (read_buf[i+12] == 0xff) && (read_buf[i+13] == 0xff)){
+      |                                                             [01;31m[K^[m[K
+
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:128:108:[m[K [01;31m[Kerror: [m[Kinvalid types ‘[01m[Kint[int][m[K’ for array subscript
+  128 | ad_buf[i+1] == 0xff) && (read_buf[i+2] != 0xff) && (read_buf[01;31m[K[[m[Ki+12] == 0xff) && (read_buf[i+13] == 0xff)){
+      |                                                             [01;31m[K^[m[K
+
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:128:136:[m[K [01;31m[Kerror: [m[Kinvalid types ‘[01m[Kint[int][m[K’ for array subscript
+  128 | d_buf[i+2] != 0xff) && (read_buf[i+12] == 0xff) && (read_buf[01;31m[K[[m[Ki+13] == 0xff)){
+      |                                                             [01;31m[K^[m[K
+
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:137:33:[m[K [01;31m[Kerror: [m[Kinvalid types ‘[01m[Kint[int][m[K’ for array subscript
+  137 |             memcpy(&g, &read_buf[01;31m[K[[m[Ki], sizeof(g));
+      |                                 [01;31m[K^[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:146:32:[m[K [01;31m[Kerror: [m[Kinvalid types ‘[01m[Kint[int][m[K’ for array subscript
+  146 |             memcpy(&g,&read_buf[01;31m[K[[m[Ki], sizeof(g));
+      |                                [01;31m[K^[m[K
+gmake[2]: *** [CMakeFiles/read_serial.dir/build.make:76: CMakeFiles/read_serial.dir/src/read_serial.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/read_serial.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

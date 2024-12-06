@@ -8,7 +8,7 @@
 #include <fcntl.h> 
 #include <assert.h>
 #include <errno.h> 
-#include <termios.h> 
+#include <termios.h>
 #include <unistd.h> 
 #include <sys/ioctl.h>
 #include <opencv2/core.hpp>
@@ -28,22 +28,22 @@ public:
     SensorReader() : Node("sensor_reader"),
                      serial_port_(-1),
                      image_(500, 500, CV_8UC3, Scalar(255, 255, 255)),
-                     
-    
-    // パブリッシャーの初期化
-    cmd_vel_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
-    
-    // タイマーの設定（100msごとに実行）
-    timer_ = this->create_wall_timer(
-        std::chrono::milliseconds(50),
-        std::bind(&SensorReader::timer_callback, this));
+                     countup(0),i(0),oneces(0)     
+    {
+        // パブリッシャーの初期化
+        cmd_vel_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
+        
+        // タイマーの設定（100msごとに実行）
+        timer_ = this->create_wall_timer(
+            std::chrono::milliseconds(50),
+            std::bind(&SensorReader::timer_callback, this));
 
-    // OpenCVウィンドウの作成
-    namedWindow("img", WINDOW_AUTOSIZE);
+        // OpenCVウィンドウの作成
+        namedWindow("img", WINDOW_AUTOSIZE);
 
-    // シリアルポートの初期化
-    init_serial();
-    
+        // シリアルポートの初期化
+        init_serial();
+    }
 
     ~SensorReader()
     {
@@ -55,6 +55,7 @@ public:
 
 private:
     void init_serial() {
+        struct termios tty;
         serial_port_ = open("/dev/ttyACM0", O_RDWR);
 
         // Check for errors
@@ -111,13 +112,19 @@ private:
         ioctl(serial_port_, FIONREAD, &byteswaiting);   // read data from serial port
 
         if(byteswaiting >= 20){
-            uint8_t read_buf[byteswaiting];
-            memset(read_buf, '\0', sizeof(read_buf));
-            read(serial_port_, &read_buf, sizeof(read_buf));
+            //uint8_t read_buf[byteswaiting];
+            std::vector<uint8_t> read_buf(byteswaiting);
+            //memset(read_buf, '\0', sizeof(read_buf));
+            std::fill(read_buf.begin(), read_buf.end(), 0);
+            //read(serial_port_, &read_buf, sizeof(read_buf));
+            ssize_t bytes_read = read(serial_port_, read_buf.data(), read_buf.size());
 
             RCLCPP_INFO(this->get_logger(), "2bsize(%d)", byteswaiting);
-            RCLCPP_INFO(this->get_logger(), "3r_bsz(%ld)", read_buf[0]);
-            RCLCPP_INFO(this->get_logger(), "6r_bBy:", std::bitset<16>{read_buf[0]});
+            RCLCPP_INFO(this->get_logger(), "3r_bsz(%d)", read_buf[0]);
+            //RCLCPP_INFO(this->get_logger(), "6r_bBy:", std::bitset<16>{read_buf[0]});
+            //RCLCPP_INFO(this->get_logger(), "6r_bBy:", std::bitset<16>{read_buf[0]}.to_string());
+            std::bitset<16> bits(read_buf[0]);
+            RCLCPP_INFO(this->get_logger(), "6r_bBy: %s", bits.to_string().c_str());
 
             // find the head point
             for(i = 0; i < sizeof(read_buf); i++){
@@ -160,9 +167,9 @@ private:
         
     }
 
-    void process_data(uint8_t* data, int size) {
+    /*void process_data(uint8_t* data, int size) {}
         // ここでは最大10バイトをg_にコピー
-        /*memset(g_, 0, sizeof(g_));
+        memset(g_, 0, sizeof(g_));
         memcpy(g_, data, std::min(size, static_cast<int>(sizeof(g_))));
 
         // センサー値の更新
@@ -172,8 +179,8 @@ private:
         calculate_and_publish_velocity();
 
         // 画像の更新と表示
-        update_display();*/
-    }
+        update_display();
+    }*/
 
     /*void update_sensor_values() {
         bset1_[0] = (g_[0] << 8) | g_[1];

@@ -1,0 +1,18 @@
+[100%] Built target read_serial
+-- Install configuration: ""
+-- Up-to-date: /home/peach/ros2_ws/src/orale_node/install/orale_node/lib/orale_node/read_serial
+-- Up-to-date: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/ament_index/resource_index/package_run_dependencies/orale_node
+-- Up-to-date: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/ament_index/resource_index/parent_prefix_path/orale_node
+-- Up-to-date: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/environment/ament_prefix_path.sh
+-- Up-to-date: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/environment/path.sh
+-- Up-to-date: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/environment/path.dsv
+-- Up-to-date: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/local_setup.bash
+-- Up-to-date: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/local_setup.sh
+-- Up-to-date: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/local_setup.zsh
+-- Up-to-date: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/local_setup.dsv
+-- Installing: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/package.dsv
+-- Up-to-date: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/ament_index/resource_index/packages/orale_node
+-- Up-to-date: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/cmake/orale_nodeConfig.cmake
+-- Up-to-date: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/cmake/orale_nodeConfig-version.cmake
+-- Up-to-date: /home/peach/ros2_ws/src/orale_node/install/orale_node/share/orale_node/package.xml
