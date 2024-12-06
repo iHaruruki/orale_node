@@ -198,24 +198,24 @@ orale_node_uninstall/fast:
 .PHONY : orale_node_uninstall/fast
 
 #=============================================================================
-# Target rules for targets named orale_node
+# Target rules for targets named read_serial
 
 # Build rule for target.
-orale_node: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 orale_node
-.PHONY : orale_node
+read_serial: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 read_serial
+.PHONY : read_serial
 
 # fast build rule for target.
-orale_node/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/orale_node.dir/build.make CMakeFiles/orale_node.dir/build
-.PHONY : orale_node/fast
+read_serial/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/read_serial.dir/build.make CMakeFiles/read_serial.dir/build
+.PHONY : read_serial/fast
 
 src/read_serial.o: src/read_serial.cpp.o
 .PHONY : src/read_serial.o
 
 # target to build an object file
 src/read_serial.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/orale_node.dir/build.make CMakeFiles/orale_node.dir/src/read_serial.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/read_serial.dir/build.make CMakeFiles/read_serial.dir/src/read_serial.cpp.o
 .PHONY : src/read_serial.cpp.o
 
 src/read_serial.i: src/read_serial.cpp.i
@@ -223,7 +223,7 @@ src/read_serial.i: src/read_serial.cpp.i
 
 # target to preprocess a source file
 src/read_serial.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/orale_node.dir/build.make CMakeFiles/orale_node.dir/src/read_serial.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/read_serial.dir/build.make CMakeFiles/read_serial.dir/src/read_serial.cpp.i
 .PHONY : src/read_serial.cpp.i
 
 src/read_serial.s: src/read_serial.cpp.s
@@ -231,7 +231,7 @@ src/read_serial.s: src/read_serial.cpp.s
 
 # target to generate assembly for a file
 src/read_serial.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/orale_node.dir/build.make CMakeFiles/orale_node.dir/src/read_serial.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/read_serial.dir/build.make CMakeFiles/read_serial.dir/src/read_serial.cpp.s
 .PHONY : src/read_serial.cpp.s
 
 # Help Target
@@ -249,7 +249,7 @@ help:
 	@echo "... test"
 	@echo "... orale_node_uninstall"
 	@echo "... uninstall"
-	@echo "... orale_node"
+	@echo "... read_serial"
 	@echo "... src/read_serial.o"
 	@echo "... src/read_serial.i"
 	@echo "... src/read_serial.s"

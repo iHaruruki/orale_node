@@ -1,38 +1,49 @@
 #include <rclcpp/rclcpp.hpp>
 #include <geometry_msgs/msg/twist.hpp>
 #include <opencv2/opencv.hpp>
-#include <fcntl.h>
-#include <termios.h>
-#include <unistd.h>
+#include <algorithm>
+#include <iostream>
+#include <stdio.h>
+#include <string.h>
+#include <fcntl.h> 
+#include <assert.h>
+#include <errno.h> 
+#include <termios.h> 
+#include <unistd.h> 
 #include <sys/ioctl.h>
+#include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/opencv.hpp>
 #include <bitset>
 #include <sstream>
-#include <algorithm> // for std::min and std::max
 
 using namespace cv;
 using namespace std;
+
+Point pos(-10,-10);//first position
+Mat image(500, 500, CV_8UC3);//y,x
 
 class SensorReader : public rclcpp::Node {
 public:
     SensorReader() : Node("sensor_reader"),
                      serial_port_(-1),
                      image_(500, 500, CV_8UC3, Scalar(255, 255, 255)),
-                     oneces_(0)
-    {
-        // パブリッシャーの初期化
-        cmd_vel_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
-        
-        // タイマーの設定（100msごとに実行）
-        timer_ = this->create_wall_timer(
-            std::chrono::milliseconds(100),
-            std::bind(&SensorReader::timer_callback, this));
+                     
+    
+    // パブリッシャーの初期化
+    cmd_vel_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
+    
+    // タイマーの設定（100msごとに実行）
+    timer_ = this->create_wall_timer(
+        std::chrono::milliseconds(50),
+        std::bind(&SensorReader::timer_callback, this));
 
-        // OpenCVウィンドウの作成
-        namedWindow("img", WINDOW_AUTOSIZE);
+    // OpenCVウィンドウの作成
+    namedWindow("img", WINDOW_AUTOSIZE);
 
-        // シリアルポートの初期化
-        init_serial();
-    }
+    // シリアルポートの初期化
+    init_serial();
+    
 
     ~SensorReader()
     {
@@ -44,79 +55,114 @@ public:
 
 private:
     void init_serial() {
-        serial_port_ = open("/dev/ttyACM0", O_RDWR | O_NOCTTY | O_SYNC);
+        serial_port_ = open("/dev/ttyACM0", O_RDWR);
+
+        // Check for errors
         if (serial_port_ < 0) {
             RCLCPP_ERROR(this->get_logger(), "Failed to open serial port: %s", strerror(errno));
             return;
         }
 
-        struct termios tty;
-        memset(&tty, 0, sizeof tty);
-
+        // Read in existing setttings, and handle any error
         if (tcgetattr(serial_port_, &tty) != 0) {
             RCLCPP_ERROR(this->get_logger(), "Error %i from tcgetattr: %s", errno, strerror(errno));
             return;
         }
 
-        // シリアルポートの設定
+        // Set tty settings, also check for error
         cfsetospeed(&tty, B9600);
         cfsetispeed(&tty, B9600);
 
-        tty.c_cflag = (tty.c_cflag & ~CSIZE) | CS8;     // 8 bits per byte
-        tty.c_iflag &= ~IGNBRK;                         // disable break processing
-        tty.c_lflag = 0;                                // no signaling chars, no echo
-        tty.c_oflag = 0;                                // no remapping, no delays
-        tty.c_cc[VMIN]  = 0;                            // read doesn't block
-        tty.c_cc[VTIME] = 5;                            // 0.5 seconds read timeout
-
-        tty.c_iflag &= ~(IXON | IXOFF | IXANY);         // shut off xON/xOFF ctrl
-        tty.c_cflag |= (CLOCAL | CREAD);                // ignore modem controls, enable reading
-        tty.c_cflag &= ~(PARENB | PARODD);              // shut off parity
-        tty.c_cflag &= ~CSTOPB;                         // 1 stop bit
-        tty.c_cflag &= ~CRTSCTS;                        // no flow control
+        tty.c_cflag &= ~PARENB; // Clear parity bit, disabling parity (most common)
+        tty.c_cflag &= ~CSTOPB; // Clear stop field, only one stop bit used in communication (most common)
+        tty.c_cflag |= CS8; // 8 bits per byte (most common)
+        tty.c_cflag &= ~CRTSCTS; // Disable RTS/CTS hardware flow control (most common)
+        tty.c_cflag |= CREAD | CLOCAL; // Turn on READ & ignore ctrl lines (CLOCAL = 1)
+        tty.c_lflag &= ~ICANON;
+        tty.c_lflag &= ~ECHO; // Disable echo
+        tty.c_lflag &= ~ECHOE; // Disable erasure
+        tty.c_lflag &= ~ECHONL; // Disable new-line echo
+        tty.c_lflag &= ~ISIG; // Disable interpretation of INTR, QUIT and SUSP
+        tty.c_iflag &= ~(IGNBRK|BRKINT|PARMRK|ISTRIP|INLCR|IGNCR|ICRNL); // Disable any special handling of received bytes
+        tty.c_oflag &= ~OPOST; // Prevent special interpretation of output bytes (e.g. newline chars)
+        tty.c_oflag &= ~ONLCR; // Prevent conversion of newline to carriage return/line feed
+        tty.c_cc[VTIME] = 10;   
+        tty.c_cc[VMIN] = 0; // 0 means read doesn't block
 
         if (tcsetattr(serial_port_, TCSANOW, &tty) != 0) {
             RCLCPP_ERROR(this->get_logger(), "Error %i from tcsetattr: %s", errno, strerror(errno));
             return;
         }
 
+        Point pos(-10,-10); //first position
+        memset(&bset12, '\0', sizeof(bset1));
+        memset(&bset22, '\0', sizeof(bset2));
+        memset(&bset32, '\0', sizeof(bset3));
+        memset(&bset42, '\0', sizeof(bset4));
+        memset(&bset52, '\0', sizeof(bset5));
+
+        countup = 0;
+
         RCLCPP_INFO(this->get_logger(), "Serial port initialized.");
     }
 
     void timer_callback() {
-        if (serial_port_ < 0) {
-            RCLCPP_ERROR(this->get_logger(), "Serial port not initialized.");
-            return;
-        }
+        
+        ioctl(serial_port_, FIONREAD, &byteswaiting);   // read data from serial port
 
-        uint8_t bytesWaiting;
-        if (ioctl(serial_port_, FIONREAD, &bytesWaiting) < 0) {
-            RCLCPP_ERROR(this->get_logger(), "ioctl FIONREAD failed: %s", strerror(errno));
-            return;
-        }
+        if(byteswaiting >= 20){
+            uint8_t read_buf[byteswaiting];
+            memset(read_buf, '\0', sizeof(read_buf));
+            read(serial_port_, &read_buf, sizeof(read_buf));
 
-        if (bytesWaiting > 25) {
-            uint8_t read_buf[256];
-            memset(read_buf, 0, sizeof(read_buf));
-            int n = read(serial_port_, read_buf, sizeof(read_buf));
+            RCLCPP_INFO(this->get_logger(), "2bsize(%d)", byteswaiting);
+            RCLCPP_INFO(this->get_logger(), "3r_bsz(%ld)", read_buf[0]);
+            RCLCPP_INFO(this->get_logger(), "6r_bBy:", std::bitset<16>{read_buf[0]});
 
-            if (n < 0) {
-                RCLCPP_ERROR(this->get_logger(), "Error reading from serial port: %s", strerror(errno));
-                return;
+            // find the head point
+            for(i = 0; i < sizeof(read_buf); i++){
+                if((read_buf[i] == 0xff) && (read_buf[i+1] == 0xff) && (read_buf[i+2] != 0xff) && (read_buf[i+12] == 0xff) && (read_buf[i+13] == 0xff)){
+                    //break;
+                }   
             }
 
-            if (n == 0) {
-                RCLCPP_WARN(this->get_logger(), "No data read from serial port.");
-                return;
-            }
+            i+=2;
+            RCLCPP_INFO(this->get_logger(), "7point(%d)", i);
 
-            process_data(read_buf, n);
+            memset(&g, '\0', sizeof(g));
+            memcpy(&g, &read_buf[i], sizeof(g));
+
+            // fill in the array
+            memset(&bset1, '\0', sizeof(bset1));
+            memset(&bset2, '\0', sizeof(bset2));
+            memset(&bset3, '\0', sizeof(bset3));
+            memset(&bset4, '\0', sizeof(bset4));
+            memset(&bset5, '\0', sizeof(bset5));
+
+            memcpy(&g,&read_buf[i], sizeof(g));
+            memcpy(&bset1, &g[0], sizeof(bset1)); bset1[0] = bset1[0] << 8; memcpy(&bset1, &g[1], 1);
+            memcpy(&bset2, &g[2], sizeof(bset2)); bset2[0] = bset2[0] << 8; memcpy(&bset2, &g[3], 1);
+            memcpy(&bset3, &g[4], sizeof(bset3)); bset3[0] = bset3[0] << 8; memcpy(&bset3, &g[5], 1);
+            memcpy(&bset4, &g[6], sizeof(bset4)); bset4[0] = bset4[0] << 8; memcpy(&bset4, &g[7], 1);
+            memcpy(&bset5, &g[8], sizeof(bset5)); bset5[0] = bset5[0] << 8; memcpy(&bset5, &g[9], 1);
+        
+            if(min1[0] == 0 && bset1[0] != 0 && (bset1[0] - bset12[0]) >= 0) memcpy(&min1,&bset1,1);
+            if(min2[0] == 0 && bset2[0] != 0 && (bset2[0] - bset22[0]) >= 0) memcpy(&min2,&bset2,1);
+            if(min3[0] == 0 && bset3[0] != 0 && (bset3[0] - bset32[0]) >= 0) memcpy(&min3,&bset3,1);
+            if(min4[0] == 0 && bset4[0] != 0 && (bset4[0] - bset42[0]) >= 0) memcpy(&min4,&bset4,1);
+            if(min5[0] == 0 && bset5[0] != 0 && (bset5[0] - bset52[0]) >= 0) memcpy(&min5,&bset5,1);
+            
+            if((min1[0] )!= 0 && (min2[0] != 0) && (min3[0] != 0) && (min4[0] != 0) && (min5[0] != 0)){
+                oneces++;
+                //break;
+            }
         }
+        
     }
 
     void process_data(uint8_t* data, int size) {
         // ここでは最大10バイトをg_にコピー
-        memset(g_, 0, sizeof(g_));
+        /*memset(g_, 0, sizeof(g_));
         memcpy(g_, data, std::min(size, static_cast<int>(sizeof(g_))));
 
         // センサー値の更新
@@ -126,10 +172,10 @@ private:
         calculate_and_publish_velocity();
 
         // 画像の更新と表示
-        update_display();
+        update_display();*/
     }
 
-    void update_sensor_values() {
+    /*void update_sensor_values() {
         bset1_[0] = (g_[0] << 8) | g_[1];
         bset2_[0] = (g_[2] << 8) | g_[3];
         bset3_[0] = (g_[4] << 8) | g_[5];
@@ -142,9 +188,9 @@ private:
         RCLCPP_INFO(this->get_logger(), "b3data: %d", bset3_[0]);
         RCLCPP_INFO(this->get_logger(), "b4data: %d", bset4_[0]);
         RCLCPP_INFO(this->get_logger(), "b5data: %d", bset5_[0]);
-    }
+    }*/
 
-    void calculate_and_publish_velocity() {
+    /*void calculate_and_publish_velocity() {
         int x = calculate_x_position();
 
         // 速度指令値の生成と発行
@@ -153,9 +199,9 @@ private:
         cmd_vel_pub_->publish(twist_msg);
 
         RCLCPP_INFO(this->get_logger(), "Publishing cmd_vel: linear.x = %f", twist_msg.linear.x);
-    }
+    }*/
 
-    void update_display() {
+    /*void update_display() {
         // 画像を白でクリア
         image_ = cv::Scalar(255, 255, 255);
 
@@ -165,111 +211,22 @@ private:
         // OpenCVウィンドウの更新
         cv::imshow("img", image_);
         cv::waitKey(1);
-    }
-
-    int calculate_x_position() {
-        float weighted_sum_x = 0.0f;
-        float weight_sum = 0.0f;
-
-        // センサー位置の定義
-        const std::pair<int, int> sensor_positions[] = {
-            {250, 250},  // センター
-            {250, 125},  // 上
-            {250, 375},  // 下
-            {125, 250},  // 左
-            {375, 250}   // 右
-        };
-
-        const uint16_t* sensor_values[] = {
-            bset1_, bset2_, bset3_, bset4_, bset5_
-        };
-
-        for (int i = 0; i < 5; i++) {
-            float weight = static_cast<float>(sensor_values[i][0]);
-            weighted_sum_x += weight * sensor_positions[i].first;
-            weight_sum += weight;
-        }
-
-        if (weight_sum > 0.0f) {
-            return static_cast<int>(weighted_sum_x / weight_sum);
-        }
-        return 250; // デフォルト値（中央）
-    }
-
-    float map_to_velocity(int x) {
-        const float MAX_VEL = 1.0f;  // 最大速度[m/s]
-        // xを0-500の範囲から0-MAX_VELにスケール
-        return (static_cast<float>(x) / 500.0f) * MAX_VEL;
-    }
-
-    void draw_sensor_circles() {
-        const std::pair<int, int> positions[] = {
-            {250, 250},  // センター
-            {250, 125},  // 上
-            {250, 375},  // 下
-            {125, 250},  // 左
-            {375, 250}   // 右
-        };
-
-        const uint16_t* values[] = {
-            bset1_, bset2_, bset3_, bset4_, bset5_
-        };
-
-        // 各センサーの円を描画
-        for (int i = 0; i < 5; i++) {
-            // センサー値のスケーリングを調整（0-1000の範囲を想定）
-            float normalized_value = static_cast<float>(values[i][0]) / 1000.0f;
-            
-            // 半径を計算（最小20、最大100）
-            int radius = static_cast<int>(20 + normalized_value * 80);
-            radius = std::max(20, std::min(100, radius));
-
-            try {
-                cv::circle(image_,
-                          cv::Point(positions[i].first, positions[i].second),
-                          radius,
-                          cv::Scalar(255, 0, 0),  // 青色
-                          2);  // 線の太さ
-                
-                RCLCPP_DEBUG(this->get_logger(), 
-                    "Drawing circle %d: pos=(%d,%d), radius=%d", 
-                    i, positions[i].first, positions[i].second, radius);
-            }
-            catch (const cv::Exception& e) {
-                RCLCPP_ERROR(this->get_logger(), 
-                    "OpenCV error while drawing circle %d: %s", 
-                    i, e.what());
-            }
-        }
-
-        // 現在位置の表示（赤い点）
-        try {
-            int current_x = calculate_x_position();
-            current_x = std::max(10, std::min(490, current_x));
-
-            cv::circle(image_,
-                      cv::Point(current_x, 250),
-                      10,  // 固定半径
-                      cv::Scalar(0, 0, 255),  // 赤色
-                      -1);  // 塗りつぶし
-        }
-        catch (const cv::Exception& e) {
-            RCLCPP_ERROR(this->get_logger(), 
-                "OpenCV error while drawing position marker: %s", 
-                e.what());
-        }
-    }
+    }*/
 
     // メンバ変数
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmd_vel_pub_;
     rclcpp::TimerBase::SharedPtr timer_;
     int serial_port_;
     cv::Mat image_;
-    int oneces_;
+    uint8_t byteswaiting;
 
-    uint8_t g_[10];
-    uint16_t bset1_[1], bset2_[1], bset3_[1], bset4_[1], bset5_[1];
-    uint16_t min1_[1], min2_[1], min3_[1], min4_[1], min5_[1];
+    int countup;
+    int i, oneces;
+    
+    uint8_t g[10];
+    uint16_t bset1[1], bset2[1], bset3[1], bset4[1], bset5[1];
+    uint16_t bset12[1], bset22[1], bset32[1], bset42[1], bset52[1];
+    uint16_t min1[1], min2[1], min3[1], min4[1], min5[1];
 };
 
 int main(int argc, char** argv) {
