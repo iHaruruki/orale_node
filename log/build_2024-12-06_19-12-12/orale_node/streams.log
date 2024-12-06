@@ -1,0 +1,91 @@
+[0.059s] Invoking command in '/home/peach/ros2_ws/src/orale_node/build/orale_node': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/peach/ros2_ws/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/install/urdf_robot:/home/peach/ros2_ws/install/p9n_bringup:/home/peach/ros2_ws/install/rqt_controller_manager:/home/peach/ros2_ws/install/rosboard:/home/peach/ros2_ws/install/ros2controlcli:/home/peach/ros2_ws/install/ros2_workshop:/home/peach/ros2_ws/install/lucia_slam_navigation:/home/peach/ros2_ws/src/urdf_tutorial_r2d2/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urdf_robot:/home/peach/ros2_ws/src/install/ros2_workshop:/home/peach/ros2_ws/src/install/raspimouse_cartographer:/opt/ros/humble /usr/bin/cmake --build /home/peach/ros2_ws/src/orale_node/build/orale_node -- -j8 -l8
+[0.208s] [35m[1mConsolidate compiler generated dependencies of target read_serial[0m
+[0.276s] [ 50%] [32mBuilding CXX object CMakeFiles/read_serial.dir/src/read_serial.cpp.o[0m
+[3.907s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:[m[K In member function ‘[01m[Kvoid SensorReader::timer_callback()[m[K’:
+[3.907s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:115:33:[m[K [01;35m[Kwarning: [m[KISO C++ forbids variable length array ‘[01m[Kread_buf[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wvla-Wvla]8;;[m[K]
+[3.907s]   115 |                         uint8_t [01;35m[Kread_buf[m[K [byteswaiting + 1];
+[3.907s]       |                                 [01;35m[K^~~~~~~~[m[K
+[3.907s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:123:38:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Klong unsigned int[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[3.908s]   123 |                         for(i = 0; [01;35m[Ki < sizeof(read_buf)[m[K; i++){//find the head point
+[3.908s]       |                                    [01;35m[K~~^~~~~~~~~~~~~~~~~~[m[K
+[3.908s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:156:49:[m[K [01;35m[Kwarning: [m[KISO C++ forbids variable length array ‘[01m[Kread_buf[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wvla-Wvla]8;;[m[K]
+[3.908s]   156 |                                         uint8_t [01;35m[Kread_buf[m[K [byteswaiting+1];
+[3.908s]       |                                                 [01;35m[K^~~~~~~~[m[K
+[3.908s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:164:54:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Klong unsigned int[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[3.908s]   164 |                                         for(i = 0; [01;35m[Ki < sizeof(read_buf)[m[K; i++){//find the head point
+[3.908s]       |                                                    [01;35m[K~~^~~~~~~~~~~~~~~~~~[m[K
+[3.914s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:250:25:[m[K [01;31m[Kerror: [m[K‘[01m[Kkey[m[K’ was not declared in this scope
+[3.914s]   250 |                         [01;31m[Kkey[m[K = waitKey(10);
+[3.915s]       |                         [01;31m[K^~~[m[K
+[3.915s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:262:33:[m[K [01;35m[Kwarning: [m[Kempty parentheses were disambiguated as a function declaration [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wvexing-parse-Wvexing-parse]8;;[m[K]
+[3.915s]   262 |         int calculate_x_position[01;35m[K()[m[K;
+[3.915s]       |                                 [01;35m[K^~[m[K
+[3.915s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:262:33:[m[K [01;36m[Knote: [m[Kremove parentheses to default-initialize a variable
+[3.916s]   262 |         int calculate_x_position[01;36m[K()[m[K;
+[3.917s]       |                                 [01;36m[K^~[m[K
+[3.917s]       |                                 [31m[K--[m[K
+[3.917s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:262:33:[m[K [01;36m[Knote: [m[Kor replace parentheses with braces to value-initialize a variable
+[3.917s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:271:9:[m[K [01;31m[Kerror: [m[Kexpected initializer before ‘[01m[Kint[m[K’
+[3.917s]   271 |         [01;31m[Kint[m[K oneces;
+[3.917s]       |         [01;31m[K^~~[m[K
+[3.917s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:269:13:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kserial_port_[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[3.917s]   269 |         int [01;35m[Kserial_port_[m[K;
+[3.917s]       |             [01;35m[K^~~~~~~~~~~~[m[K
+[3.917s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:272:13:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kx[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[3.917s]   272 |         int [01;35m[Kx[m[K, y;
+[3.917s]       |             [01;35m[K^[m[K
+[3.918s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:272:16:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Ky[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[3.918s]   272 |         int x, [01;35m[Ky[m[K;
+[3.918s]       |                [01;35m[K^[m[K
+[3.918s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:274:17:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[3.918s]   274 |         uint8_t [01;35m[Kg[m[K[10];
+[3.918s]       |                 [01;35m[K^[m[K
+[3.918s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:275:18:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kbset1[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[3.918s]   275 |         uint16_t [01;35m[Kbset1[m[K[1], bset2[1], bset3[1], bset4[1], bset5[1];
+[3.918s]       |                  [01;35m[K^~~~~[m[K
+[3.918s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:275:28:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kbset2[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[3.918s]   275 |         uint16_t bset1[1], [01;35m[Kbset2[m[K[1], bset3[1], bset4[1], bset5[1];
+[3.918s]       |                            [01;35m[K^~~~~[m[K
+[3.919s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:275:38:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kbset3[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[3.919s]   275 |         uint16_t bset1[1], bset2[1], [01;35m[Kbset3[m[K[1], bset4[1], bset5[1];
+[3.919s]       |                                      [01;35m[K^~~~~[m[K
+[3.919s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:275:48:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kbset4[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[3.919s]   275 |         uint16_t bset1[1], bset2[1], bset3[1], [01;35m[Kbset4[m[K[1], bset5[1];
+[3.919s]       |                                                [01;35m[K^~~~~[m[K
+[3.919s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:275:58:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kbset5[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[3.919s]   275 |         uint16_t bset1[1], bset2[1], bset3[1], bset4[1], [01;35m[Kbset5[m[K[1];
+[3.919s]       |                                                          [01;35m[K^~~~~[m[K
+[3.919s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:276:18:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kbset12[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[3.919s]   276 |         uint16_t [01;35m[Kbset12[m[K[1], bset22[1], bset32[1], bset42[1], bset52[1];
+[3.919s]       |                  [01;35m[K^~~~~~[m[K
+[3.919s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:276:29:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kbset22[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[3.920s]   276 |         uint16_t bset12[1], [01;35m[Kbset22[m[K[1], bset32[1], bset42[1], bset52[1];
+[3.920s]       |                             [01;35m[K^~~~~~[m[K
+[3.920s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:276:40:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kbset32[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[3.920s]   276 |         uint16_t bset12[1], bset22[1], [01;35m[Kbset32[m[K[1], bset42[1], bset52[1];
+[3.926s]       |                                        [01;35m[K^~~~~~[m[K
+[3.926s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:276:51:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kbset42[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[3.927s]   276 |         uint16_t bset12[1], bset22[1], bset32[1], [01;35m[Kbset42[m[K[1], bset52[1];
+[3.927s]       |                                                   [01;35m[K^~~~~~[m[K
+[3.927s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:276:62:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kbset52[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[3.927s]   276 |         uint16_t bset12[1], bset22[1], bset32[1], bset42[1], [01;35m[Kbset52[m[K[1];
+[3.927s]       |                                                              [01;35m[K^~~~~~[m[K
+[3.927s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:277:18:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kmin1[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[3.927s]   277 |         uint16_t [01;35m[Kmin1[m[K[1], min2[1], min3[1], min4[1], min5[1];
+[3.927s]       |                  [01;35m[K^~~~[m[K
+[3.927s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:277:27:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kmin2[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[3.927s]   277 |         uint16_t min1[1], [01;35m[Kmin2[m[K[1], min3[1], min4[1], min5[1];
+[3.928s]       |                           [01;35m[K^~~~[m[K
+[3.928s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:277:36:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kmin3[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[3.928s]   277 |         uint16_t min1[1], min2[1], [01;35m[Kmin3[m[K[1], min4[1], min5[1];
+[3.928s]       |                                    [01;35m[K^~~~[m[K
+[3.928s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:277:45:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kmin4[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[3.928s]   277 |         uint16_t min1[1], min2[1], min3[1], [01;35m[Kmin4[m[K[1], min5[1];
+[3.928s]       |                                             [01;35m[K^~~~[m[K
+[3.928s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:277:54:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kmin5[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[3.928s]   277 |         uint16_t min1[1], min2[1], min3[1], min4[1], [01;35m[Kmin5[m[K[1];
+[3.928s]       |                                                      [01;35m[K^~~~[m[K
+[5.227s] gmake[2]: *** [CMakeFiles/read_serial.dir/build.make:76: CMakeFiles/read_serial.dir/src/read_serial.cpp.o] Error 1
+[5.227s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/read_serial.dir/all] Error 2
+[5.228s] gmake: *** [Makefile:146: all] Error 2
+[5.231s] Invoked command in '/home/peach/ros2_ws/src/orale_node/build/orale_node' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/peach/ros2_ws/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/install/urdf_robot:/home/peach/ros2_ws/install/p9n_bringup:/home/peach/ros2_ws/install/rqt_controller_manager:/home/peach/ros2_ws/install/rosboard:/home/peach/ros2_ws/install/ros2controlcli:/home/peach/ros2_ws/install/ros2_workshop:/home/peach/ros2_ws/install/lucia_slam_navigation:/home/peach/ros2_ws/src/urdf_tutorial_r2d2/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urdf_robot:/home/peach/ros2_ws/src/install/ros2_workshop:/home/peach/ros2_ws/src/install/raspimouse_cartographer:/opt/ros/humble /usr/bin/cmake --build /home/peach/ros2_ws/src/orale_node/build/orale_node -- -j8 -l8

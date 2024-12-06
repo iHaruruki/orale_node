@@ -27,8 +27,7 @@ class SensorReader : public rclcpp::Node {
 public:
     SensorReader() : Node("sensor_reader"),
                      serial_port_(-1),
-                     image_(500, 500, CV_8UC3, Scalar(255, 255, 255)),
-                     countup(0),i(0),oneces(0)     
+                     image_(500, 500, CV_8UC3, Scalar(255, 255, 255))   
     {
         // パブリッシャーの初期化
         cmd_vel_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
@@ -109,116 +108,174 @@ private:
 
     void timer_callback() {
         
-        ioctl(serial_port_, FIONREAD, &byteswaiting);   // read data from serial port
+        ioctl(serial_port_, FIONREAD, &byteswaiting);	//read data from serial
 
-        if(byteswaiting >= 20){
-            //uint8_t read_buf[byteswaiting];
-            std::vector<uint8_t> read_buf(byteswaiting);
-            //memset(read_buf, '\0', sizeof(read_buf));
-            std::fill(read_buf.begin(), read_buf.end(), 0);
-            //read(serial_port_, &read_buf, sizeof(read_buf));
-            ssize_t bytes_read = read(serial_port_, read_buf.data(), read_buf.size());
+		if (byteswaiting > 25){
+			uint8_t read_buf[byteswaiting + 1];
+		  	memset(&read_buf, '\0', sizeof(read_buf));
+		  	read(serial_port_, &read_buf, sizeof(read_buf));
+							
+			//printf("2bsize(%d\n", byteswaiting);		
+			//printf("3r_bsz(%ld\n", sizeof(read_buf));
+			//cout << "6r_bBy(" << std::bitset<16>{read_buf[0]} << endl;
+			
+			for(i = 0; i < sizeof(read_buf); i++){//find the head point
+				//cout << "|check(" <<  std::bitset<8>{read_buf[i]} << endl;//data check
+				if((read_buf[i] == 0xff)&&(read_buf[i+1] == 0xff)&&(read_buf[i+2] != 0xff)&&(read_buf[i+12] == 0xff)&&(read_buf[i+13] == 0xff)){
+				 	break;
+				 	} 
+			 	}
+			i+=2;	
+			//printf("7point(%d\n", i);
+			//---------------------------------------------------
+			memset(&g, '\0', sizeof(g));
+			memcpy(&g, &read_buf[i], sizeof(g));
+			//for(int l = 0; l < sizeof(g); l++) cout << "|gdata(" <<  std::bitset<8>{g[l]} << endl;//data check
+			
+			memset(&bset1, '\0', sizeof(bset1));//fill in the array
+			memset(&bset2, '\0', sizeof(bset2));
+			memset(&bset3, '\0', sizeof(bset3));
+			memset(&bset4, '\0', sizeof(bset4));
+			memset(&bset5, '\0', sizeof(bset5));
+			
+			memcpy(&g, &read_buf[i], sizeof(g));
+			memcpy(&bset1, &g[0], 1);bset1[0] = bset1[0] << 8;memcpy(&bset1, &g[1], 1);//read buff
+			memcpy(&bset2, &g[2], 1);bset2[0] = bset2[0] << 8;memcpy(&bset2, &g[3], 1);
+			memcpy(&bset3, &g[4], 1);bset3[0] = bset3[0] << 8;memcpy(&bset3, &g[5], 1);
+			memcpy(&bset4, &g[6], 1);bset4[0] = bset4[0] << 8;memcpy(&bset4, &g[7], 1);
+			memcpy(&bset5, &g[8], 1);bset5[0] = bset5[0] << 8;memcpy(&bset5, &g[9], 1);
+			
+			
+		
+			
+			while(oneces == 0){
+				ioctl(serial_port_, FIONREAD, &byteswaiting);	//read data from serial
 
-            RCLCPP_INFO(this->get_logger(), "2bsize(%d)", byteswaiting);
-            RCLCPP_INFO(this->get_logger(), "3r_bsz(%d)", read_buf[0]);
-            //RCLCPP_INFO(this->get_logger(), "6r_bBy:", std::bitset<16>{read_buf[0]});
-            //RCLCPP_INFO(this->get_logger(), "6r_bBy:", std::bitset<16>{read_buf[0]}.to_string());
-            std::bitset<16> bits(read_buf[0]);
-            RCLCPP_INFO(this->get_logger(), "6r_bBy: %s", bits.to_string().c_str());
+				if (byteswaiting > 25){
+					uint8_t read_buf [byteswaiting+1];
+				  	memset(&read_buf, '\0', sizeof(read_buf));
+				  	read(serial_port_, &read_buf, sizeof(read_buf));
+									
+					//printf("2bsize(%d\n", byteswaiting);		
+					//printf("3r_bsz(%ld\n", sizeof(read_buf));
+					//cout << "6r_bBy(" << std::bitset<16>{read_buf[0]} << endl;
+					
+					for(i = 0; i < sizeof(read_buf); i++){//find the head point
+						//cout << "|check(" <<  std::bitset<8>{read_buf[i]} << endl;//data check
+						if((read_buf[i] == 0xff)&&(read_buf[i+1] == 0xff)&&(read_buf[i+2] != 0xff)&&(read_buf[i+12] == 0xff)&&(read_buf[i+13] == 0xff)){
+						 	break;
+						} 
+					}
+					i+=2;	
+					//printf("7point(%d\n", i);
+					//---------------------------------------------------
+					memset(&g, '\0', sizeof(g));
+					memcpy(&g, &read_buf[i], sizeof(g));
+					//for(int l = 0; l < sizeof(g); l++) cout << "|gdata(" <<  std::bitset<8>{g[l]} << endl;//data check
+					
+					memcpy(&bset12, &bset1, 1);
+					memcpy(&bset22, &bset2, 1);
+					memcpy(&bset32, &bset3, 1);
+					memcpy(&bset42, &bset4, 1);
+					memcpy(&bset52, &bset5, 1);
+					
+					memset(&bset1, '\0', sizeof(bset1));//fill in the array
+					memset(&bset2, '\0', sizeof(bset2));
+					memset(&bset3, '\0', sizeof(bset3));
+					memset(&bset4, '\0', sizeof(bset4));
+					memset(&bset5, '\0', sizeof(bset5));
+					
+					memcpy(&g, &read_buf[i], sizeof(g));
+					memcpy(&bset1, &g[0], 1);bset1[0] = bset1[0] << 8;memcpy(&bset1, &g[1], 1);//read buff
+					memcpy(&bset2, &g[2], 1);bset2[0] = bset2[0] << 8;memcpy(&bset2, &g[3], 1);
+					memcpy(&bset3, &g[4], 1);bset3[0] = bset3[0] << 8;memcpy(&bset3, &g[5], 1);
+					memcpy(&bset4, &g[6], 1);bset4[0] = bset4[0] << 8;memcpy(&bset4, &g[7], 1);
+					memcpy(&bset5, &g[8], 1);bset5[0] = bset5[0] << 8;memcpy(&bset5, &g[9], 1);
+				
+				
+				
+	 				if(min1[0] == 0 && bset1[0] != 0 && (bset1[0]-bset12[0]) >= 0)memcpy(&min1,&bset1,1);
+					if(min2[0] == 0 && bset2[0] != 0 && (bset2[0]-bset22[0]) >= 0)memcpy(&min2,&bset2,1);
+					if(min3[0] == 0 && bset3[0] != 0 && (bset3[0]-bset32[0]) >= 0)memcpy(&min3,&bset3,1);
+					if(min4[0] == 0 && bset4[0] != 0 && (bset4[0]-bset42[0]) >= 0)memcpy(&min4,&bset4,1);
+					if(min5[0] == 0 && bset5[0] != 0 && (bset5[0]-bset52[0]) >= 0)memcpy(&min5,&bset5,1);
 
-            // find the head point
-            for(i = 0; i < sizeof(read_buf); i++){
-                if((read_buf[i] == 0xff) && (read_buf[i+1] == 0xff) && (read_buf[i+2] != 0xff) && (read_buf[i+12] == 0xff) && (read_buf[i+13] == 0xff)){
-                    //break;
-                }   
-            }
+					
+					if((min1[0] != 0) && (min2[0] != 0) && (min3[0] != 0) && (min4[0] != 0) && (min5[0] != 0)){
+					oneces++;
+					
+					break;
+					}
+				}
+			}
+			cout << "b1data(" << std::dec << (bset1[0]) << endl;
+			//cout << "b2data(" << std::bitset<16>{bset2[0]} << endl;
+			cout << "b2data(" << std::dec << (bset2[0]) << endl;
+	   		//cout << "b3data(" << std::bitset<16>{bset3[0]} << endl;
+			cout << "b3data(" << std::dec << (bset3[0]) << endl;
+			//cout << "b4data(" << std::bitset<16>{bset4[0]} << endl;
+			cout << "b4data(" << std::dec << (bset4[0]) << endl;
+			//cout << "b5data(" << std::bitset<16>{bset5[0]} << endl;
+			cout << "b5data(" << std::dec << (bset5[0]) << endl;		
+			int border = 130;
+			if((bset1[0] > border)&&(bset2[0] > border)&&(bset3[0] > border)&&(bset4[0] > border)&&(bset5[0] > border)){
+				image = Scalar(255, 255, 255);
+				uint16_t scor = 710;
+			
+				float mh1 = (bset1[0] - min1[0]);float mh12 = (scor - min1[0]);
+				float mh2 = (bset2[0] - min2[0]);float mh22 = (scor - min2[0]);
+				float mh3 = (bset3[0] - min3[0]);float mh32 = (scor - min3[0]);
+				float mh4 = (bset4[0] - min4[0]);float mh42 = (scor - min4[0]);
+				float mh5 = (bset5[0] - min5[0]);float mh52 = (scor - min5[0]);
+				
+				float s1 = mh1/mh12;
+				float s2 = mh2/mh22; 
+				float s3 = mh3/mh32;
+				float s4 = mh4/mh42;
+				float s5 = mh5/mh52;
+				//printf("%f\n", s1);
+				//std::cout << s5 << "," << s2 << "," << s3 << "," << s4 <<std::endl;
+				circle(image, Point(250,250), (35+(65*s1)), cv::Scalar(255, 0,0),2);//center
+				circle(image, Point(250,125), (35+(65*s2)), cv::Scalar(255, 0,0),2);//12
+				circle(image, Point(250,375), (35+(65*s3)), cv::Scalar(255, 0,0),2);//6
+				circle(image, Point(125,250), (35+(65*s4)), cv::Scalar(255, 0,0),2);//9
+		  		circle(image, Point(375,250), (35+(65*s5)), cv::Scalar(255, 0,0),2);//3
+				int x = (((s1*250)+(s2*250)+(s3*250)+(s4*25)+(s5*475))/(s1+s2+s3+s4+s5));
+				int y = (((s1*250)+(s2*25)+(s3*475)+(s4*250)+(s5*250))/(s1+s2+s3+s4+s5));
+				
+				circle(image,Point(x,y), 10, cv::Scalar(0,0,255),-1);
+			//}
+			imshow("img",image);
+			key = waitKey(10);
+			//printf("\n");
+			}
+			
+		}
 
-            i+=2;
-            RCLCPP_INFO(this->get_logger(), "7point(%d)", i);
+        void init_serial();
+        void timer_callback();
+        void process_data(uint8_t* data, int size);
+        void update_sensor_values();
+        void calculate_and_publish_velocity();
+        void update_display();
+        int calculate_x_position();
+        float map_to_velocity(int x);
+        void draw_sensor_circles();
 
-            memset(&g, '\0', sizeof(g));
-            memcpy(&g, &read_buf[i], sizeof(g));
+        // メンバ変数
+        /*rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmd_vel_pub_;
+        rclcpp::TimerBase::SharedPtr timer_;
+        int serial_port_;
+        cv::Mat image_
+        int oneces;
+        int x, y;
+        int key;
 
-            // fill in the array
-            memset(&bset1, '\0', sizeof(bset1));
-            memset(&bset2, '\0', sizeof(bset2));
-            memset(&bset3, '\0', sizeof(bset3));
-            memset(&bset4, '\0', sizeof(bset4));
-            memset(&bset5, '\0', sizeof(bset5));
-
-            memcpy(&g,&read_buf[i], sizeof(g));
-            memcpy(&bset1, &g[0], sizeof(bset1)); bset1[0] = bset1[0] << 8; memcpy(&bset1, &g[1], 1);
-            memcpy(&bset2, &g[2], sizeof(bset2)); bset2[0] = bset2[0] << 8; memcpy(&bset2, &g[3], 1);
-            memcpy(&bset3, &g[4], sizeof(bset3)); bset3[0] = bset3[0] << 8; memcpy(&bset3, &g[5], 1);
-            memcpy(&bset4, &g[6], sizeof(bset4)); bset4[0] = bset4[0] << 8; memcpy(&bset4, &g[7], 1);
-            memcpy(&bset5, &g[8], sizeof(bset5)); bset5[0] = bset5[0] << 8; memcpy(&bset5, &g[9], 1);
-        
-            if(min1[0] == 0 && bset1[0] != 0 && (bset1[0] - bset12[0]) >= 0) memcpy(&min1,&bset1,1);
-            if(min2[0] == 0 && bset2[0] != 0 && (bset2[0] - bset22[0]) >= 0) memcpy(&min2,&bset2,1);
-            if(min3[0] == 0 && bset3[0] != 0 && (bset3[0] - bset32[0]) >= 0) memcpy(&min3,&bset3,1);
-            if(min4[0] == 0 && bset4[0] != 0 && (bset4[0] - bset42[0]) >= 0) memcpy(&min4,&bset4,1);
-            if(min5[0] == 0 && bset5[0] != 0 && (bset5[0] - bset52[0]) >= 0) memcpy(&min5,&bset5,1);
-            
-            if((min1[0] )!= 0 && (min2[0] != 0) && (min3[0] != 0) && (min4[0] != 0) && (min5[0] != 0)){
-                oneces++;
-                //break;
-            }
-        }
-        
+        uint8_t g[10];
+        uint16_t bset1[1], bset2[1], bset3[1], bset4[1], bset5[1];
+        uint16_t bset12[1], bset22[1], bset32[1], bset42[1], bset52[1];
+        uint16_t min1[1], min2[1], min3[1], min4[1], min5[1];*/
     }
-
-    /*void process_data(uint8_t* data, int size) {}
-        // ここでは最大10バイトをg_にコピー
-        memset(g_, 0, sizeof(g_));
-        memcpy(g_, data, std::min(size, static_cast<int>(sizeof(g_))));
-
-        // センサー値の更新
-        update_sensor_values();
-
-        // 位置計算と速度指令値の生成
-        calculate_and_publish_velocity();
-
-        // 画像の更新と表示
-        update_display();
-    }*/
-
-    /*void update_sensor_values() {
-        bset1_[0] = (g_[0] << 8) | g_[1];
-        bset2_[0] = (g_[2] << 8) | g_[3];
-        bset3_[0] = (g_[4] << 8) | g_[5];
-        bset4_[0] = (g_[6] << 8) | g_[7];
-        bset5_[0] = (g_[8] << 8) | g_[9];
-
-        // センサー値をログ出力
-        RCLCPP_INFO(this->get_logger(), "b1data: %d", bset1_[0]);
-        RCLCPP_INFO(this->get_logger(), "b2data: %d", bset2_[0]);
-        RCLCPP_INFO(this->get_logger(), "b3data: %d", bset3_[0]);
-        RCLCPP_INFO(this->get_logger(), "b4data: %d", bset4_[0]);
-        RCLCPP_INFO(this->get_logger(), "b5data: %d", bset5_[0]);
-    }*/
-
-    /*void calculate_and_publish_velocity() {
-        int x = calculate_x_position();
-
-        // 速度指令値の生成と発行
-        auto twist_msg = geometry_msgs::msg::Twist();
-        twist_msg.linear.x = map_to_velocity(x);
-        cmd_vel_pub_->publish(twist_msg);
-
-        RCLCPP_INFO(this->get_logger(), "Publishing cmd_vel: linear.x = %f", twist_msg.linear.x);
-    }*/
-
-    /*void update_display() {
-        // 画像を白でクリア
-        image_ = cv::Scalar(255, 255, 255);
-
-        // センサー値に基づいて円を描画
-        draw_sensor_circles();
-
-        // OpenCVウィンドウの更新
-        cv::imshow("img", image_);
-        cv::waitKey(1);
-    }*/
 
     // メンバ変数
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmd_vel_pub_;
@@ -229,6 +286,8 @@ private:
 
     int countup;
     int i, oneces;
+    int x, y;
+    int key;
     
     uint8_t g[10];
     uint16_t bset1[1], bset2[1], bset3[1], bset4[1], bset5[1];

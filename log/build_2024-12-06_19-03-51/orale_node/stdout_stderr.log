@@ -1,0 +1,16 @@
+[35m[1mConsolidate compiler generated dependencies of target read_serial[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/read_serial.dir/src/read_serial.cpp.o[0m
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:[m[K In member function ‘[01m[Kvoid SensorReader::timer_callback()[m[K’:
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:112:40:[m[K [01;31m[Kerror: [m[K‘[01m[KbytesWaiting[m[K’ was not declared in this scope; did you mean ‘[01m[Kbyteswaiting[m[K’?
+  112 |         ioctl(serial_port_, FIONREAD, &[01;31m[KbytesWaiting[m[K);   //read data from serial
+      |                                        [01;31m[K^~~~~~~~~~~~[m[K
+      |                                        [32m[Kbyteswaiting[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:116:33:[m[K [01;31m[Kerror: [m[K‘[01m[Kread_buf[m[K’ was not declared in this scope
+  116 |                         memset(&[01;31m[Kread_buf[m[K, '\0', sizeof(read_buf));
+      |                                 [01;31m[K^~~~~~~~[m[K
+[01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:250:25:[m[K [01;31m[Kerror: [m[K‘[01m[Kkey[m[K’ was not declared in this scope
+  250 |                         [01;31m[Kkey[m[K = waitKey(10);
+      |                         [01;31m[K^~~[m[K
+gmake[2]: *** [CMakeFiles/read_serial.dir/build.make:76: CMakeFiles/read_serial.dir/src/read_serial.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/read_serial.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

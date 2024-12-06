@@ -1,0 +1,58 @@
+[0.044s] Invoking command in '/home/peach/ros2_ws/src/orale_node/build/orale_node': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/peach/ros2_ws/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/install/urdf_robot:/home/peach/ros2_ws/install/p9n_bringup:/home/peach/ros2_ws/install/rqt_controller_manager:/home/peach/ros2_ws/install/rosboard:/home/peach/ros2_ws/install/ros2controlcli:/home/peach/ros2_ws/install/ros2_workshop:/home/peach/ros2_ws/install/lucia_slam_navigation:/home/peach/ros2_ws/src/urdf_tutorial_r2d2/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urdf_robot:/home/peach/ros2_ws/src/install/ros2_workshop:/home/peach/ros2_ws/src/install/raspimouse_cartographer:/opt/ros/humble /usr/bin/cmake --build /home/peach/ros2_ws/src/orale_node/build/orale_node -- -j8 -l8
+[0.214s] [ 50%] [32mBuilding CXX object CMakeFiles/read_serial.dir/src/read_serial.cpp.o[0m
+[4.509s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:[m[K In member function ‘[01m[Kvoid SensorReader::timer_callback()[m[K’:
+[4.509s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:130:26:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Klong unsigned int[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[4.509s]   130 |             for(i = 0; [01;35m[Ki < sizeof(read_buf)[m[K; i++){
+[4.510s]       |                        [01;35m[K~~^~~~~~~~~~~~~~~~~~[m[K
+[4.510s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:135:52:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kmin(<unresolved overloaded function type>, int)[m[K’
+[4.510s]   135 |                     memcpy(g, read_buf[i], [01;31m[Kstd::min(size, static_cast<int>(sizeof(g)))[m[K);
+[4.510s]       |                                            [01;31m[K~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[4.510s] In file included from [01m[K/usr/include/c++/11/memory:63[m[K,
+[4.510s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:153[m[K,
+[4.510s]                  from [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:1[m[K:
+[4.510s] [01m[K/usr/include/c++/11/bits/stl_algobase.h:230:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconstexpr const _Tp& std::min(const _Tp&, const _Tp&) [with _Tp = int][m[K’
+[4.510s]   230 |     [01;36m[Kmin[m[K(const _Tp& __a, const _Tp& __b)
+[4.510s]       |     [01;36m[K^~~[m[K
+[4.510s] [01m[K/usr/include/c++/11/bits/stl_algobase.h:230:20:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[K<unresolved overloaded function type>[m[K’ to ‘[01m[Kconst int&[m[K’
+[4.510s]   230 |     min([01;36m[Kconst _Tp& __a[m[K, const _Tp& __b)
+[4.511s]       |         [01;36m[K~~~~~~~~~~~^~~[m[K
+[4.511s] [01m[K/usr/include/c++/11/bits/stl_algobase.h:278:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp, class _Compare> constexpr const _Tp& std::min(const _Tp&, const _Tp&, _Compare)[m[K’
+[4.511s]   278 |     [01;36m[Kmin[m[K(const _Tp& __a, const _Tp& __b, _Compare __comp)
+[4.511s]       |     [01;36m[K^~~[m[K
+[4.511s] [01m[K/usr/include/c++/11/bits/stl_algobase.h:278:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[4.513s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:135:52:[m[K [01;36m[Knote: [m[K  candidate expects 3 arguments, 2 provided
+[4.513s]   135 |                     memcpy(g, read_buf[i], [01;36m[Kstd::min(size, static_cast<int>(sizeof(g)))[m[K);
+[4.513s]       |                                            [01;36m[K~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[4.513s] In file included from [01m[K/usr/include/c++/11/algorithm:62[m[K,
+[4.513s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:18[m[K,
+[4.513s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[4.513s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+[4.513s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+[4.513s]                  from [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:1[m[K:
+[4.513s] [01m[K/usr/include/c++/11/bits/stl_algo.h:3449:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp> constexpr _Tp std::min(std::initializer_list<_Tp>)[m[K’
+[4.513s]  3449 |     [01;36m[Kmin[m[K(initializer_list<_Tp> __l)
+[4.514s]       |     [01;36m[K^~~[m[K
+[4.514s] [01m[K/usr/include/c++/11/bits/stl_algo.h:3449:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[4.514s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:135:52:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 2 provided
+[4.514s]   135 |                     memcpy(g, read_buf[i], [01;36m[Kstd::min(size, static_cast<int>(sizeof(g)))[m[K);
+[4.514s]       |                                            [01;36m[K~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[4.514s] In file included from [01m[K/usr/include/c++/11/algorithm:62[m[K,
+[4.514s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:18[m[K,
+[4.514s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[4.514s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+[4.514s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+[4.514s]                  from [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:1[m[K:
+[4.514s] [01m[K/usr/include/c++/11/bits/stl_algo.h:3455:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp, class _Compare> constexpr _Tp std::min(std::initializer_list<_Tp>, _Compare)[m[K’
+[4.515s]  3455 |     [01;36m[Kmin[m[K(initializer_list<_Tp> __l, _Compare __comp)
+[4.515s]       |     [01;36m[K^~~[m[K
+[4.515s] [01m[K/usr/include/c++/11/bits/stl_algo.h:3455:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[4.515s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:135:52:[m[K [01;36m[Knote: [m[K  couldn’t deduce template parameter ‘[01m[K_Tp[m[K’
+[4.515s]   135 |                     memcpy(g, read_buf[i], [01;36m[Kstd::min(size, static_cast<int>(sizeof(g)))[m[K);
+[4.515s]       |                                            [01;36m[K~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[4.515s] [01m[K/home/peach/ros2_ws/src/orale_node/src/read_serial.cpp:120:21:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kbytes_read[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[4.515s]   120 |             ssize_t [01;35m[Kbytes_read[m[K = read(serial_port_, read_buf.data(), read_buf.size());
+[4.515s]       |                     [01;35m[K^~~~~~~~~~[m[K
+[5.950s] gmake[2]: *** [CMakeFiles/read_serial.dir/build.make:76: CMakeFiles/read_serial.dir/src/read_serial.cpp.o] Error 1
+[5.951s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/read_serial.dir/all] Error 2
+[5.951s] gmake: *** [Makefile:146: all] Error 2
+[5.955s] Invoked command in '/home/peach/ros2_ws/src/orale_node/build/orale_node' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/peach/ros2_ws/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/install/urdf_robot:/home/peach/ros2_ws/install/p9n_bringup:/home/peach/ros2_ws/install/rqt_controller_manager:/home/peach/ros2_ws/install/rosboard:/home/peach/ros2_ws/install/ros2controlcli:/home/peach/ros2_ws/install/ros2_workshop:/home/peach/ros2_ws/install/lucia_slam_navigation:/home/peach/ros2_ws/src/urdf_tutorial_r2d2/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urdf_tutorial_r2d2:/home/peach/ros2_ws/src/install/urdf_robot:/home/peach/ros2_ws/src/install/ros2_workshop:/home/peach/ros2_ws/src/install/raspimouse_cartographer:/opt/ros/humble /usr/bin/cmake --build /home/peach/ros2_ws/src/orale_node/build/orale_node -- -j8 -l8
