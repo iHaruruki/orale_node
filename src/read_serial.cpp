@@ -242,6 +242,33 @@ private:
 		  		circle(image, Point(375,250), (35+(65*s5)), cv::Scalar(255, 0,0),2);//3
 				int x = (((s1*250)+(s2*250)+(s3*250)+(s4*25)+(s5*475))/(s1+s2+s3+s4+s5));
 				int y = (((s1*250)+(s2*25)+(s3*475)+(s4*250)+(s5*250))/(s1+s2+s3+s4+s5));
+                RCLCPP_INFO(this->get_logger(), "x: %d, y: %d", x, y);
+
+                // 速度
+
+				geometry_msgs::msg::Twist twist_msg;
+                if(x > 350)
+                {
+                    twist_msg.angular.z = 0.2;
+                }
+                else if(x < 150)
+                {
+                    twist_msg.angular.z = -0.2;
+                }
+                else if(y > 350)
+                {
+                    twist_msg.linear.x = -0.1;
+                }
+                else if(y < 150)
+                {
+                    twist_msg.linear.x = 0.1;
+                }
+                else
+                {
+                    twist_msg.linear.x = 0.0;
+                    twist_msg.angular.z = 0.0;
+                }
+				cmd_vel_pub_->publish(twist_msg);
 				
 				circle(image,Point(x,y), 10, cv::Scalar(0,0,255),-1);
 			//}
@@ -262,19 +289,6 @@ private:
         float map_to_velocity(int x);
         void draw_sensor_circles();
 
-        // メンバ変数
-        /*rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmd_vel_pub_;
-        rclcpp::TimerBase::SharedPtr timer_;
-        int serial_port_;
-        cv::Mat image_
-        int oneces;
-        int x, y;
-        int key;
-
-        uint8_t g[10];
-        uint16_t bset1[1], bset2[1], bset3[1], bset4[1], bset5[1];
-        uint16_t bset12[1], bset22[1], bset32[1], bset42[1], bset52[1];
-        uint16_t min1[1], min2[1], min3[1], min4[1], min5[1];*/
     }
 
     // メンバ変数
