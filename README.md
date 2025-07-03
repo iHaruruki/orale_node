@@ -1,9 +1,6 @@
 # orale_node
 ### Node and Topic
-```mermaid
-flowchart LR
-    A(["/play_audio"]) ==> B["/audio_player_node"]
-```
+![]{}
 ## Dependency
 
 ## Setup
