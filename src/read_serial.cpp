@@ -201,10 +201,10 @@ private:
                 else if (x < 220) twist.angular.z =  0.2f;
                 else if (y > 280) twist.linear.x  = -0.1f;
                 else if (y < 220) twist.linear.x  =  0.1f;
-                /*else{
+                else{
                     twist.linear.x = 0;
                     twist.angular.z = 0;
-                }*/
+                }
                 //cmd_vel_pub_->publish(twist);
                 if(twist.linear.x == last_twist_.linear.x && twist.angular.z == last_twist_.angular.z)
                 {
