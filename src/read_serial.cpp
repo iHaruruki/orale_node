@@ -249,19 +249,19 @@ private:
                 // 速度
 
 				geometry_msgs::msg::Twist twist_msg;
-                if(x > 350)
+                if(x > 300)
                 {
                     twist_msg.angular.z = 0.2;
                 }
-                else if(x < 150)
+                else if(x < 200)
                 {
                     twist_msg.angular.z = -0.2;
                 }
-                else if(y > 350)
+                else if(y > 300)
                 {
                     twist_msg.linear.x = -0.1;
                 }
-                else if(y < 150)
+                else if(y < 200)
                 {
                     twist_msg.linear.x = 0.1;
                 }
