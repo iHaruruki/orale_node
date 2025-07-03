@@ -176,15 +176,15 @@ private:
                 }
                 // 円描画
                 circle(image_, Point(250,250), int(35+65*s[0]), Scalar(255,0,0), 2);//中心
-                circle(image_, Point(250,125), int(35+65*s[2]), Scalar(255,0,0), 2);//左
-                circle(image_, Point(250,375), int(35+65*s[1]), Scalar(255,0,0), 2);//右
-                circle(image_, Point(125,250), int(35+65*s[3]), Scalar(255,0,0), 2);//上
-                circle(image_, Point(375,250), int(35+65*s[4]), Scalar(255,0,0), 2);//下
+                circle(image_, Point(250,125), int(35+65*s[1]), Scalar(255,0,0), 2);//左
+                circle(image_, Point(250,375), int(35+65*s[2]), Scalar(255,0,0), 2);//右
+                circle(image_, Point(125,250), int(35+65*s[4]), Scalar(255,0,0), 2);//上
+                circle(image_, Point(375,250), int(35+65*s[3]), Scalar(255,0,0), 2);//下
 
                 // 重心計算
-                x = int((s[0]*250 + s[1]*250 + s[2]*250 + s[3]*25 + s[4]*475) /
+                x = int((s[0]*250 + s[1]*250 + s[2]*250 + s[4]*25 + s[3]*475) /
                         (s[0]+s[1]+s[2]+s[3]+s[4]));
-                y = int((s[0]*250 + s[2]*25  + s[1]*475 + s[3]*250 + s[4]*250) /
+                y = int((s[0]*250 + s[1]*25  + s[2]*475 + s[3]*250 + s[4]*250) /
                         (s[0]+s[1]+s[2]+s[3]+s[4]));
                 RCLCPP_INFO(this->get_logger(), "x:%d, y:%d", x, y);
 
