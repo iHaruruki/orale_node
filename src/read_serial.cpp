@@ -209,15 +209,15 @@ private:
 				}
 			}
 			//cout << "b1data(" << std::dec << (bset1[0]) << endl;
-            RCLCPP_INFO(this->get_logger(), "b1:%d", bset1[0]);
+            RCLCPP_INFO(this->get_logger(), "b1:%u", bset1[0]);
 			//cout << "b2data(" << std::dec << (bset2[0]) << endl;
-            RCLCPP_INFO(this->get_logger(), "b2:%d", bset2[0]);
+            RCLCPP_INFO(this->get_logger(), "b2:%u", bset2[0]);
 			//cout << "b3data(" << std::dec << (bset3[0]) << endl;
-            RCLCPP_INFO(this->get_logger(), "b3:%d", bset3[0]);
+            RCLCPP_INFO(this->get_logger(), "b3:%u", bset3[0]);
 			//cout << "b4data(" << std::dec << (bset4[0]) << endl;
-            RCLCPP_INFO(this->get_logger(), "b4:%d", bset4[0]);
+            RCLCPP_INFO(this->get_logger(), "b4:%u", bset4[0]);
 			//cout << "b5data(" << std::dec << (bset5[0]) << endl;
-            RCLCPP_INFO(this->get_logger(), "b5:%d", bset5[0]);
+            RCLCPP_INFO(this->get_logger(), "b5:%u", bset5[0]);
 
 			int border = 130;
 			if((bset1[0] > border)&&(bset2[0] > border)&&(bset3[0] > border)&&(bset4[0] > border)&&(bset5[0] > border)){
