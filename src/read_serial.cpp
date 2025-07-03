@@ -198,7 +198,7 @@ private:
                 // Twist publish
                 geometry_msgs::msg::Twist twist;
                 if      (x > 280) twist.angular.z = -0.2f;
-                else if (x < 220) twist.angular.z =  0.2f;
+                else if (x < 210) twist.angular.z =  0.2f;
                 else if (y > 280) twist.linear.x  = -0.1f;
                 else if (y < 220) twist.linear.x  =  0.1f;
                 else{
