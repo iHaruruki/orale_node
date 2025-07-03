@@ -247,21 +247,20 @@ private:
                 RCLCPP_INFO(this->get_logger(), "x: %d, y: %d", x, y);
 
                 // 速度
-
 				geometry_msgs::msg::Twist twist_msg;
-                if(x > 280)
+                if(x > 290)
                 {
                     twist_msg.angular.z = 0.2;
                 }
-                else if(x < 220)
+                else if(x < 210)
                 {
                     twist_msg.angular.z = -0.2;
                 }
-                else if(y > 280)
+                else if(y > 290)
                 {
                     twist_msg.linear.x = -0.1;
                 }
-                else if(y < 220)
+                else if(y < 210)
                 {
                     twist_msg.linear.x = 0.1;
                 }
