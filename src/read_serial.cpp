@@ -153,7 +153,7 @@ private:
             msg16.data = bset5[0]; sensor5_pub_->publish(msg16);
 
             // 位置計算＆描画（既存ロジック）
-            int border = 130;
+            int border = 50;
             if (bset1[0] > border && bset2[0] > border &&
                 bset3[0] > border && bset4[0] > border &&
                 bset5[0] > border)
