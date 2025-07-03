@@ -21,10 +21,14 @@ public:
     : Node("sensor_reader"),
       serial_port_(-1),
       image_(500, 500, CV_8UC3, Scalar(255, 255, 255)),
+      stable_twist_count_(0),
       countup(0), i(0), oneces(0), x(0), y(0), key(0), byteswaiting(0)
     {
         // cmd_vel パブリッシャー
         cmd_vel_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
+
+        //
+        last_twist_ = geometry_msgs::msg::Twist();
 
         // センサ値用パブリッシャー
         sensor1_pub_ = this->create_publisher<std_msgs::msg::UInt16>("sensor1", 10);
@@ -96,6 +100,9 @@ private:
 
         RCLCPP_INFO(this->get_logger(), "Serial port initialized.");
     }
+
+    geometry_msgs::msg::Twist last_twist_;
+    int stable_twist_count_;
 
     void timer_callback()
     {
@@ -198,7 +205,20 @@ private:
                     twist.linear.x = 0;
                     twist.angular.z = 0;
                 }*/
-                cmd_vel_pub_->publish(twist);
+                //cmd_vel_pub_->publish(twist);
+                if(twist.linear.x == last_twist_.linear.x && twist.angular.z == last_twist_.angular.z)
+                {
+                    stable_twist_count_++;
+                }
+                else
+                {
+                    stable_twist_count_ = 1;
+                    last_twist_ = twist;
+                }
+                if(stable_twist_count_ >= 20)
+                {
+                    cmd_vel_pub_ ->publish(twist);
+                }
 
                 // 重心点表示
                 circle(image_, Point(x,y), 10, Scalar(0,0,255), -1);
