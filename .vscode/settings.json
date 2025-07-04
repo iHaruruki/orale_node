@@ -59,5 +59,6 @@
     ],
     "files.associations": {
         "*.tcc": "cpp"
-    }
+    },
+    "ros.distro": "humble"
 }
