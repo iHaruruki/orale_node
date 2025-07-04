@@ -218,6 +218,7 @@ private:
                 if(stable_twist_count_ >= 20)
                 {
                     cmd_vel_pub_ ->publish(twist);
+                    stable_twist_count_ = 0;
                 }
 
                 // 重心点表示
