@@ -105,7 +105,7 @@ private:
     {
         constexpr int N = 100; //Number of samples
         RCLCPP_INFO(this->get_logger(),
-                    "== Calibration Start ===\n"
+                    "=== Calibration Start ===\n"
                     "Place the sensor surface in a dark location.\n"
                     " Reading will begin in 5 seconds...");
 
@@ -124,7 +124,7 @@ private:
                         "Sensor %d: min=%u, max=%u",
                         i+1, cal_min_[i], cal_max_[i]);
         }
-        RCLCPP_INFO(this->get_logger(), "== Calibration Done ==");
+        RCLCPP_INFO(this->get_logger(), "=== Calibration Done ===");
     }
 
     void sample_range(uint16_t out[5], int N)
