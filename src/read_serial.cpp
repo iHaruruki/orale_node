@@ -103,7 +103,7 @@ private:
 
     void calibrate()
     {
-        constexpr int N = 100; //Number of samples
+        constexpr int N = 500; //Number of samples
         RCLCPP_INFO(this->get_logger(),
                     "=== Calibration Start ===\n"
                     "Place the sensor surface in a dark location.\n"
