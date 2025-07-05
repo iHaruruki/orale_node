@@ -31,7 +31,7 @@ public:
       stable_twist_count_(0)  // removed trailing comma
     {
         // Publisher
-        cmd_vel_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
+        //cmd_vel_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
         sensor_pub_[0] = this->create_publisher<std_msgs::msg::UInt16>("sensor1", 10);
         sensor_pub_[1] = this->create_publisher<std_msgs::msg::UInt16>("sensor2", 10);
         sensor_pub_[2] = this->create_publisher<std_msgs::msg::UInt16>("sensor3", 10);
@@ -62,7 +62,7 @@ public:
 
 private:
     // mnmber fanction
-    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmd_vel_pub_;
+    //rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmd_vel_pub_;
     rclcpp::Publisher<std_msgs::msg::UInt16>::SharedPtr sensor_pub_[5];
     rclcpp::TimerBase::SharedPtr timer_;
     int serial_port_;
@@ -199,6 +199,9 @@ private:
             msg.data = uint16_t(norm[i] * 1000);
             sensor_pub_[i]->publish(msg);
         }
+
+        // 描画
+        // something
     }
 };
 
