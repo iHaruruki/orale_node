@@ -159,3 +159,21 @@ int main(int argc, char** argv)
   rclcpp::shutdown();
   return 0;
 }
+/*
+Subscriber usage
+In any other node you can now do:
+
+cpp
+コピーする
+編集する
+auto sub_min = node->create_subscription<std_msgs::msg::UInt16MultiArray>(
+  "calibration_min", 10,
+  [](const std_msgs::msg::UInt16MultiArray::SharedPtr msg) {
+    // msg->data[0] ... msg->data[4]
+  });
+auto sub_max = node->create_subscription<std_msgs::msg::UInt16MultiArray>(
+  "calibration_max", 10,
+  [](const std_msgs::msg::UInt16MultiArray::SharedPtr msg) {
+    // ...
+  });
+*/
