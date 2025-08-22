@@ -18,9 +18,10 @@ public:
   : Node("sensor_reader"), serial_port_(-1), bytes_waiting_(0)
   {
     // Publisher
-    for (int i = 0; i < 5; ++i) {
+    for (int i = 0; i < SENSOR_COUNT; ++i) {
+      std::string topic = std::string("sensor") + std::to_string(i+1);
       sensor_pub_[i] = this->create_publisher<std_msgs::msg::UInt16>(
-        "sensor" + std::to_string(i+1), 10);
+        topic, 10);
     }
 
     init_serial();
@@ -38,6 +39,8 @@ public:
   }
 
 private:
+  static constexpr int SENSOR_COUNT = 9;
+
   void init_serial()
   {
     serial_port_ = open("/dev/ttyUSB0", O_RDWR | O_NOCTTY);
@@ -65,6 +68,11 @@ private:
 
   void read_frame()
   {
+    // シリアル未初期化なら何もしない
+    if (serial_port_ < 0) {
+      return;
+    }
+
     // 内部バッファに溜まっているバイト数を取得
     ioctl(serial_port_, FIONREAD, &bytes_waiting_);
     if (bytes_waiting_ < 30) {
@@ -74,13 +82,14 @@ private:
 
     std::vector<uint8_t> buf(bytes_waiting_);
     int n = ::read(serial_port_, buf.data(), buf.size());
-    if (n < 22) {
+    if (n < 2 + 2 * SENSOR_COUNT) {
+      // センサ全数分のデータがない
       return;
     }
 
     // 先頭から 0xFF 0xFF … のヘッダを探す
     int idx = -1;
-    for (int i = 0; i <= n - 22; ++i) {
+    for (int i = 0; i <= n - 2 - 2 * SENSOR_COUNT; ++i) {
       if (buf[i] == 0xFF && buf[i+1] == 0xFF) {
         idx = i + 2;  // データ部スタート位置
         break;
@@ -90,10 +99,15 @@ private:
       return;
     }
 
-    // 9センサ×2バイトのデータを big-endian で取得
-    for (int i = 0; i < 9; ++i) {
-      raw_[i] = (uint16_t(buf[idx + 2*i]) << 8)
-              |  uint16_t(buf[idx + 2*i + 1]);
+    // SENSOR_COUNTセンサ×2バイトのデータを big-endian で取得（範囲チェックあり）
+    for (int i = 0; i < SENSOR_COUNT; ++i) {
+      int off = idx + 2 * i;
+      if (off + 1 >= n) {
+        // 想定外の短いフレーム
+        return;
+      }
+      raw_[i] = (uint16_t(buf[off]) << 8)
+              |  uint16_t(buf[off + 1]);
     }
   }
 
@@ -102,17 +116,21 @@ private:
     read_frame();
 
     auto msg = std_msgs::msg::UInt16();
-    for (int i = 0; i < 9; ++i) {
+    for (int i = 0; i < SENSOR_COUNT; ++i) {
+      if (!sensor_pub_[i]) {
+        RCLCPP_WARN(this->get_logger(), "publisher %d not initialized", i);
+        continue;
+      }
       msg.data = raw_[i];
       sensor_pub_[i]->publish(msg);
     }
   }
 
-  rclcpp::Publisher<std_msgs::msg::UInt16>::SharedPtr sensor_pub_[9];
+  rclcpp::Publisher<std_msgs::msg::UInt16>::SharedPtr sensor_pub_[SENSOR_COUNT];
   rclcpp::TimerBase::SharedPtr timer_;
   int serial_port_;
   int bytes_waiting_;
-  uint16_t raw_[9];
+  uint16_t raw_[SENSOR_COUNT];
 };
 
 int main(int argc, char** argv)
