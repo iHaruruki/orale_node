@@ -1,5 +1,6 @@
 #include <rclcpp/rclcpp.hpp>
 #include <geometry_msgs/msg/twist.hpp>
+#include <std_msgs/msg/u_int16_multi_array.hpp>
 #include <opencv2/opencv.hpp>
 #include <algorithm>
 #include <iostream>
@@ -29,6 +30,7 @@ public:
                      payload_size_(9 * 2) // 9 sensors * 2 bytes each
     {
         cmd_vel_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
+        sensor_pub_ = this->create_publisher<std_msgs::msg::UInt16MultiArray>("sensor_values_raw", 10);
         timer_ = this->create_wall_timer(
             std::chrono::milliseconds(50),
             std::bind(&SensorReader::timer_callback, this));
@@ -139,6 +141,14 @@ private:
                 bset_[k] = (hi << 8) | lo;
             }
 
+            // Always publish raw sensor values immediately after decoding
+            if (sensor_pub_) {
+                std_msgs::msg::UInt16MultiArray raw_msg;
+                raw_msg.data.reserve(9);
+                for (int k = 0; k < 9; ++k) raw_msg.data.push_back(bset_[k]);
+                sensor_pub_->publish(raw_msg);
+            }
+
             // initial calibration: collect min values for each sensor
             if (oneces_ == 0) {
                 bool all_set = true;
@@ -182,12 +192,14 @@ private:
                     if (s[k] > 1.0f) s[k] = 1.0f;
                 }
 
-                // positions for 3x3 grid
-                vector<Point> positions = {
-                    {125,125}, {250,125}, {375,125},
-                    {125,250}, {250,250}, {375,250},
-                    {125,375}, {250,375}, {375,375}
-                };
+                // raw data already published above
+
+                 // positions for 3x3 grid
+                 vector<Point> positions = {
+                     {125,125}, {250,125}, {375,125},
+                     {125,250}, {250,250}, {375,250},
+                     {125,375}, {250,375}, {375,375}
+                 };
 
                 for (int k = 0; k < 9; ++k) {
                     int radius = static_cast<int>(35 + (65 * s[k]));
@@ -217,6 +229,7 @@ private:
 
     // メンバ変数
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmd_vel_pub_;
+    rclcpp::Publisher<std_msgs::msg::UInt16MultiArray>::SharedPtr sensor_pub_;
     rclcpp::TimerBase::SharedPtr timer_;
     int serial_port_;
     cv::Mat image_;
