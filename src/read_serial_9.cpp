@@ -40,7 +40,7 @@ public:
 private:
   void init_serial()
   {
-    serial_port_ = open("/dev/ttyACM0", O_RDWR | O_NOCTTY);
+    serial_port_ = open("/dev/ttyUSB0", O_RDWR | O_NOCTTY);
     if (serial_port_ < 0) {
       RCLCPP_ERROR(this->get_logger(), "Serial port open failed: %s", strerror(errno));
       rclcpp::shutdown();
@@ -49,8 +49,8 @@ private:
 
     termios tty;
     tcgetattr(serial_port_, &tty);
-    cfsetospeed(&tty, B9600);
-    cfsetispeed(&tty, B9600);
+    cfsetospeed(&tty, B1152000);
+    cfsetispeed(&tty, B1152000);
     tty.c_cflag = (tty.c_cflag & ~CSIZE) | CS8;
     tty.c_cflag |= CREAD | CLOCAL;
     tty.c_lflag &= ~(ICANON | ECHO | ECHOE | ISIG);
@@ -67,20 +67,20 @@ private:
   {
     // 内部バッファに溜まっているバイト数を取得
     ioctl(serial_port_, FIONREAD, &bytes_waiting_);
-    if (bytes_waiting_ < 12) {
-      // ヘッダ含め12バイト未満なら読み捨て
+    if (bytes_waiting_ < 30) {
+      // ヘッダ含め30バイト未満なら読み捨て
       return;
     }
 
     std::vector<uint8_t> buf(bytes_waiting_);
     int n = ::read(serial_port_, buf.data(), buf.size());
-    if (n < 12) {
+    if (n < 22) {
       return;
     }
 
     // 先頭から 0xFF 0xFF … のヘッダを探す
     int idx = -1;
-    for (int i = 0; i <= n - 12; ++i) {
+    for (int i = 0; i <= n - 22; ++i) {
       if (buf[i] == 0xFF && buf[i+1] == 0xFF) {
         idx = i + 2;  // データ部スタート位置
         break;
@@ -90,8 +90,8 @@ private:
       return;
     }
 
-    // 5センサ×2バイトのデータを big-endian で取得
-    for (int i = 0; i < 5; ++i) {
+    // 9センサ×2バイトのデータを big-endian で取得
+    for (int i = 0; i < 9; ++i) {
       raw_[i] = (uint16_t(buf[idx + 2*i]) << 8)
               |  uint16_t(buf[idx + 2*i + 1]);
     }
@@ -102,7 +102,7 @@ private:
     read_frame();
 
     auto msg = std_msgs::msg::UInt16();
-    for (int i = 0; i < 5; ++i) {
+    for (int i = 0; i < 9; ++i) {
       msg.data = raw_[i];
       sensor_pub_[i]->publish(msg);
     }
