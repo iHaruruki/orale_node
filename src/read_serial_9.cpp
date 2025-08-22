@@ -1,5 +1,6 @@
 #include <rclcpp/rclcpp.hpp>
 #include <std_msgs/msg/u_int16.hpp>
+#include <std_msgs/msg/u_int16_multi_array.hpp>
 
 #include <fcntl.h>
 #include <errno.h>
@@ -17,12 +18,8 @@ public:
   SensorReader()
   : Node("sensor_reader"), serial_port_(-1), bytes_waiting_(0)
   {
-    // Publisher
-    for (int i = 0; i < SENSOR_COUNT; ++i) {
-      std::string topic = std::string("sensor") + std::to_string(i+1);
-      sensor_pub_[i] = this->create_publisher<std_msgs::msg::UInt16>(
-        topic, 10);
-    }
+    // Publisher: 1つの topic に SENSOR_COUNT 個の値を載せる
+    sensor_pub_ = this->create_publisher<std_msgs::msg::UInt16MultiArray>("sensors", 10);
 
     init_serial();
 
@@ -115,18 +112,19 @@ private:
   {
     read_frame();
 
-    auto msg = std_msgs::msg::UInt16();
+    std_msgs::msg::UInt16MultiArray msg;
+    msg.data.resize(SENSOR_COUNT);
     for (int i = 0; i < SENSOR_COUNT; ++i) {
-      if (!sensor_pub_[i]) {
-        RCLCPP_WARN(this->get_logger(), "publisher %d not initialized", i);
-        continue;
-      }
-      msg.data = raw_[i];
-      sensor_pub_[i]->publish(msg);
+      msg.data[i] = raw_[i];
+    }
+    if (sensor_pub_) {
+      sensor_pub_->publish(msg);
+    } else {
+      RCLCPP_WARN(this->get_logger(), "multi-array publisher not initialized");
     }
   }
 
-  rclcpp::Publisher<std_msgs::msg::UInt16>::SharedPtr sensor_pub_[SENSOR_COUNT];
+  rclcpp::Publisher<std_msgs::msg::UInt16MultiArray>::SharedPtr sensor_pub_;
   rclcpp::TimerBase::SharedPtr timer_;
   int serial_port_;
   int bytes_waiting_;
