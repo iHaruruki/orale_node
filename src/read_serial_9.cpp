@@ -108,11 +108,11 @@ private:
     }
   }
 
-  rclcpp::Publisher<std_msgs::msg::UInt16>::SharedPtr sensor_pub_[5];
+  rclcpp::Publisher<std_msgs::msg::UInt16>::SharedPtr sensor_pub_[9];
   rclcpp::TimerBase::SharedPtr timer_;
   int serial_port_;
   int bytes_waiting_;
-  uint16_t raw_[5];
+  uint16_t raw_[9];
 };
 
 int main(int argc, char** argv)
