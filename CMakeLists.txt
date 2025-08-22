@@ -17,6 +17,12 @@ ament_target_dependencies(orale_serial_node
   std_msgs
 )
 
+add_executable(tatto_serial_node src/read_serial_9.cpp)
+ament_target_dependencies(tatto_serial_node
+  rclcpp
+  std_msgs
+)
+
 add_executable(calibrator_node src/calibrator.cpp)
 ament_target_dependencies(calibrator_node
   rclcpp
@@ -25,6 +31,7 @@ ament_target_dependencies(calibrator_node
 
 install(TARGETS
   orale_serial_node
+  tatto_serial_node
   calibrator_node
   DESTINATION lib/${PROJECT_NAME}
 )
