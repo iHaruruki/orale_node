@@ -37,6 +37,8 @@ public:
 
 private:
   static constexpr int SENSOR_COUNT = 9;
+  // 受信する1フレームの合計バイト数（ヘッダ 2B + センサ9個×2B + 予備/チェックサム 2B = 22B）
+  static constexpr int FRAME_LEN = 22;
 
   void init_serial()
   {
@@ -72,24 +74,28 @@ private:
 
     // 内部バッファに溜まっているバイト数を取得
     ioctl(serial_port_, FIONREAD, &bytes_waiting_);
-    if (bytes_waiting_ < 30) {
-      // ヘッダ含め30バイト未満なら読み捨て
+    // 最低でも1フレーム分のデータが無ければ処理しない
+    if (bytes_waiting_ < FRAME_LEN) {
       return;
     }
 
     std::vector<uint8_t> buf(bytes_waiting_);
     int n = ::read(serial_port_, buf.data(), buf.size());
-    if (n < 2 + 2 * SENSOR_COUNT) {
-      // センサ全数分のデータがない
+    // 最低でも1フレーム分読み込めているか確認
+    if (n < FRAME_LEN) {
       return;
     }
 
     // 先頭から 0xFF 0xFF … のヘッダを探す
     int idx = -1;
-    for (int i = 0; i <= n - 2 - 2 * SENSOR_COUNT; ++i) {
+    // ヘッダ位置はフレーム全体がバッファ内に収まる範囲で探す
+    for (int i = 0; i <= n - FRAME_LEN; ++i) {
       if (buf[i] == 0xFF && buf[i+1] == 0xFF) {
-        idx = i + 2;  // データ部スタート位置
-        break;
+        // i から FRAME_LEN バイトが取れることを確認
+        if (i + FRAME_LEN <= n) {
+          idx = i + 2;  // データ部スタート位置
+          break;
+        }
       }
     }
     if (idx < 0) {
